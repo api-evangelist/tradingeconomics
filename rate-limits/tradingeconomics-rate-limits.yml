@@ -1,0 +1,67 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Trading Economics
+providerId: tradingeconomics
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: true
+tags:
+- Economic Indicators
+- Interest Rates
+- Macroeconomics
+- Financial Data
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Trading Economics documents a general limitation of 2 requests per second
+  on the REST API, with per-call row caps rather than daily quotas - a
+  maximum of 10,000 rows per historical data call and 1,000 rows per
+  economic calendar call - and a 260-character limit on request URLs.
+  Overall request volumes depend on the subscription plan, with higher
+  tiers allowing greater volumes. Trial accounts are capped at 100,000 data
+  points and 100 data requests.
+notes: >-
+  The rate limits page does not document the throttle response code or any
+  burst allowance; verify plan-specific volumes in the developer portal on
+  reconciliation.
+sources:
+- https://docs.tradingeconomics.com/get_started/rate-limits/
+- https://tradingeconomics.com/api/pricing.aspx
+limits:
+- name: Requests Per Second
+  scope: account
+  metric: requests
+  limit: 2 per second
+  notes: General limitation across the REST API, documented on the rate limits page.
+- name: Historical Rows Per Call
+  scope: request
+  metric: rows
+  limit: 10000
+  notes: Single API calls for historical data return at most 10,000 rows; page with date ranges.
+- name: Calendar Rows Per Call
+  scope: request
+  metric: rows
+  limit: 1000
+  notes: Economic Calendar calls return at most 1,000 rows per request.
+- name: URL Length
+  scope: request
+  metric: characters
+  limit: 260
+  notes: One API call is limited to URLs of 260 characters; batch fewer countries/indicators per call.
+- name: Trial Quota
+  scope: account
+  metric: data_points
+  limit: 100000 data points and 100 requests
+  notes: Applies to trial users only, per the pricing page.
+policies:
+- name: Plan-Based Volumes
+  description: Specific request volumes depend on the subscription plan; higher-tier plans allow greater request volumes and more frequent access.
+- name: Pagination by Date Range
+  description: Work within the 10,000-row historical and 1,000-row calendar caps by slicing requests into date ranges.
+- name: Backoff Strategy
+  description: Stay under 2 requests per second; implement client-side spacing and retry with backoff on throttle responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

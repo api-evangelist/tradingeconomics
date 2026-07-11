@@ -1,0 +1,395 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "placement": "query",
+      "key": "c",
+      "value": "{{apiKey}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indicators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Latest indicators by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/mexico?c={{apiKey}}&f=json"
+          },
+          "docs": "Latest values for all economic indicators for a country, including interest rates, inflation, GDP, and unemployment."
+        },
+        {
+          "info": {
+            "name": "One indicator across all countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/all/interest rate?c={{apiKey}}&f=json"
+          },
+          "docs": "Latest value of a single indicator (e.g. interest rate) for every country covered."
+        },
+        {
+          "info": {
+            "name": "Indicator by ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/ticker/usurtot?c={{apiKey}}&f=json"
+          },
+          "docs": "Latest indicator value by Trading Economics ticker."
+        },
+        {
+          "info": {
+            "name": "Sovereign credit ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/credit-ratings?c={{apiKey}}&f=json"
+          },
+          "docs": "Credit ratings for all countries (TE score plus S&P, Moody's, Fitch)."
+        },
+        {
+          "info": {
+            "name": "Credit ratings by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/credit-ratings/country/mexico,sweden?c={{apiKey}}&f=json"
+          },
+          "docs": "Credit ratings for one or more countries."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Economic Calendar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calendar snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar?c={{apiKey}}&f=json"
+          },
+          "docs": "Upcoming and recent economic calendar events with actual, previous, and forecast values."
+        },
+        {
+          "info": {
+            "name": "Calendar by country and date range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/country/All/2026-07-01/2026-07-31?c={{apiKey}}&f=json"
+          },
+          "docs": "Calendar events for given countries (or All) between two dates."
+        },
+        {
+          "info": {
+            "name": "Calendar events by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/events/country/china,canada?c={{apiKey}}&f=json"
+          },
+          "docs": "Calendar event types available for one or more countries."
+        },
+        {
+          "info": {
+            "name": "Calendar events by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/calendarid/174108,160025,160030?c={{apiKey}}&f=json"
+          },
+          "docs": "Calendar events by calendar ID."
+        },
+        {
+          "info": {
+            "name": "Calendar updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/updates?c={{apiKey}}&f=json"
+          },
+          "docs": "Recently updated calendar events."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commodities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/commodities?c={{apiKey}}&f=json"
+          },
+          "docs": "Current quotes for commodities."
+        },
+        {
+          "info": {
+            "name": "Currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/currency?c={{apiKey}}&f=json"
+          },
+          "docs": "Current quotes for currency pairs."
+        },
+        {
+          "info": {
+            "name": "Stock market indexes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/index?c={{apiKey}}&f=json"
+          },
+          "docs": "Current quotes for stock market indexes."
+        },
+        {
+          "info": {
+            "name": "Cryptocurrencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/crypto?c={{apiKey}}&f=json"
+          },
+          "docs": "Current quotes for cryptocurrencies."
+        },
+        {
+          "info": {
+            "name": "Government bonds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/bond?c={{apiKey}}&f=json"
+          },
+          "docs": "Government bond yields; filter by maturity (type=10Y) and country."
+        },
+        {
+          "info": {
+            "name": "Quotes by symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/symbol/aapl:us?c={{apiKey}}&f=json"
+          },
+          "docs": "Current quotes for specific market symbols."
+        },
+        {
+          "info": {
+            "name": "Markets historical",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/historical/aapl:us?c={{apiKey}}&f=json"
+          },
+          "docs": "Daily historical prices for market symbols."
+        },
+        {
+          "info": {
+            "name": "Markets intraday",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/intraday/aapl:us?c={{apiKey}}&f=json"
+          },
+          "docs": "Intraday prices for market symbols."
+        },
+        {
+          "info": {
+            "name": "Markets search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/search/japan?c={{apiKey}}&f=json"
+          },
+          "docs": "Search market instruments by term."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forecasts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forecasts by country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/country/mexico,sweden?c={{apiKey}}&f=json"
+          },
+          "docs": "Multi-quarter forecasts for all indicators of the given countries."
+        },
+        {
+          "info": {
+            "name": "Forecasts by indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/indicator/interest rate?c={{apiKey}}&f=json"
+          },
+          "docs": "Forecasts for one or more indicators (e.g. interest rate) across countries."
+        },
+        {
+          "info": {
+            "name": "Forecasts by country and indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/country/mexico,sweden/indicator/gdp,population?c={{apiKey}}&f=json"
+          },
+          "docs": "Forecasts by country and indicator."
+        },
+        {
+          "info": {
+            "name": "Forecasts by ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/ticker/usurtot,wgdpchin?c={{apiKey}}&f=json"
+          },
+          "docs": "Forecasts by Trading Economics ticker."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Historical",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Historical by country and indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/country/mexico/indicator/gdp?c={{apiKey}}&f=json"
+          },
+          "docs": "Full historical time series by country and indicator (max 10,000 rows)."
+        },
+        {
+          "info": {
+            "name": "Historical by country, indicator, and dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/country/mexico,sweden/indicator/gdp,population/2015-01-01/2015-12-31?c={{apiKey}}&f=json"
+          },
+          "docs": "Historical time series bounded by a date range."
+        },
+        {
+          "info": {
+            "name": "Historical by ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/ticker/usurtot/2015-03-01?c={{apiKey}}&f=json"
+          },
+          "docs": "Historical time series by ticker from a start date."
+        },
+        {
+          "info": {
+            "name": "Latest historical",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/latest?c={{apiKey}}&f=json"
+          },
+          "docs": "Recently released or revised indicator values."
+        },
+        {
+          "info": {
+            "name": "Historical updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/updates?c={{apiKey}}&f=json"
+          },
+          "docs": "Recently updated historical records."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Financials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Financials by category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/financials/category/assets?c={{apiKey}}&f=json"
+          },
+          "docs": "Company financials snapshot by category."
+        },
+        {
+          "info": {
+            "name": "Financials by symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/financials/symbol/aapl:us?c={{apiKey}}&f=json"
+          },
+          "docs": "Company financials snapshot by stock symbol."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Trading Economics
+providerId: tradingeconomics
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: true
+tags:
+- Economic Indicators
+- Interest Rates
+- Macroeconomics
+- Financial Data
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Trading Economics API spend. Unlike usage-metered AI or
+  infrastructure APIs, Trading Economics bills flat subscription tiers
+  (Standard, Professional, Enterprise) sized by features used, request
+  volume, and redistribution rights, billed monthly on yearly commitments.
+  Cost optimization is therefore about right-sizing the tier against actual
+  request volume and row consumption rather than per-call metering.
+notes: >-
+  Tier prices were grounded from a June 2026 third-party comparison
+  (Standard $149/month, Professional $299/month, billed yearly); verify on
+  the provider pricing page during reconciliation.
+sources:
+- https://tradingeconomics.com/api/pricing.aspx
+- https://docs.tradingeconomics.com/get_started/rate-limits/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Trading Economics
+serviceCategory: Analytics
+billingModel:
+  pricingCategory: Committed
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Trading Economics API
+  ServiceCategory: Analytics
+  ProviderName: Trading Economics
+  PublisherName: Trading Economics
+  InvoiceIssuerName: Trading Economics
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Committed
+meters:
+- name: api_requests
+  description: REST API requests made against the subscription; not billed per call but bounded by plan volume and the 2 requests/second limit.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint_group
+- name: data_points
+  description: Data points (rows) returned; trial accounts are capped at 100,000 data points, and paid plan sizing tracks volume consumed.
+  unit: rows
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint_group
+- name: streaming_connections
+  description: Concurrent WebSocket connections to wss://stream.tradingeconomics.com and topics subscribed.
+  unit: connections
+  aggregation: max
+  dimensions:
+  - account
+  - topic
+principles:
+- name: Visibility
+  description: Log request counts and rows returned per endpoint group (indicators, calendar, markets, forecasts, historical) to see what the subscription is actually used for.
+- name: Allocation
+  description: Front the single API key with an internal proxy that tags consuming teams and workloads, since the provider bills one subscription per account.
+- name: Optimization
+  description: Cache slow-moving indicator and forecast data (most macro series update monthly or quarterly), use the updates endpoints to sync deltas instead of re-pulling full series, and use the WebSocket stream instead of polling for calendar releases and market ticks.
+- name: Accountability
+  description: Review request volume against plan size at renewal; downgrade or upgrade the yearly commitment based on observed volume.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

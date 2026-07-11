@@ -1,0 +1,1195 @@
+{
+  "info": {
+    "_postman_id": "6f9c8698-f146-4780-b85e-0fbfc683736c",
+    "name": "Trading Economics API",
+    "description": "REST API for Trading Economics economic data - indicators (interest rates, inflation, GDP), economic calendar, markets, forecasts, historical time series, and financials. Authenticate with API client credentials (key:secret) in the c query parameter.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tradingeconomics.com"
+    },
+    {
+      "key": "apiKey",
+      "value": "key:secret"
+    }
+  ],
+  "item": [
+    {
+      "id": "c5e87dae-debc-4eed-98ea-eafa7eea3af8",
+      "name": "Indicators",
+      "item": [
+        {
+          "id": "892d6210-8eea-416e-af46-d493ff6f90df",
+          "name": "Latest indicators by country",
+          "request": {
+            "name": "Latest indicators by country",
+            "description": {
+              "content": "Latest values for all economic indicators for a country, including interest rates, inflation, GDP, and unemployment.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/country/mexico?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "country",
+                "mexico"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "842a6042-8bec-43f1-a715-b140337275e5",
+          "name": "One indicator across all countries",
+          "request": {
+            "name": "One indicator across all countries",
+            "description": {
+              "content": "Latest value of a single indicator (e.g. interest rate) for every country covered.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/country/all/interest rate?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "country",
+                "all",
+                "interest rate"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "2f33205c-b3bd-4b8c-a40a-c92337358f43",
+          "name": "Indicator by ticker",
+          "request": {
+            "name": "Indicator by ticker",
+            "description": {
+              "content": "Latest indicator value by Trading Economics ticker.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/country/ticker/usurtot?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "country",
+                "ticker",
+                "usurtot"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "46cfef52-95f8-4afe-be6d-1b2d8b6f2085",
+          "name": "Sovereign credit ratings",
+          "request": {
+            "name": "Sovereign credit ratings",
+            "description": {
+              "content": "Credit ratings for all countries (TE score plus S&P, Moody's, Fitch).",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/credit-ratings?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "credit-ratings"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a83c0cbf-a5ef-4ef7-b814-817169e3de3e",
+          "name": "Credit ratings by country",
+          "request": {
+            "name": "Credit ratings by country",
+            "description": {
+              "content": "Credit ratings for one or more countries.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/credit-ratings/country/mexico,sweden?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "credit-ratings",
+                "country",
+                "mexico,sweden"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "90df8ce7-1afb-4782-b4af-499bd00bc5eb",
+      "name": "Economic Calendar",
+      "item": [
+        {
+          "id": "4b444b76-a047-4cf0-833b-403e0b2a5a05",
+          "name": "Calendar snapshot",
+          "request": {
+            "name": "Calendar snapshot",
+            "description": {
+              "content": "Upcoming and recent economic calendar events with actual, previous, and forecast values.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calendar?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calendar"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "8c7c7bfe-566f-4af6-ae4a-578c1c8c8c14",
+          "name": "Calendar by country and date range",
+          "request": {
+            "name": "Calendar by country and date range",
+            "description": {
+              "content": "Calendar events for given countries (or All) between two dates.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calendar/country/All/2026-07-01/2026-07-31?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calendar",
+                "country",
+                "All",
+                "2026-07-01",
+                "2026-07-31"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "2a3eb2a0-d2b4-4500-bd86-82e67b946eb3",
+          "name": "Calendar events by country",
+          "request": {
+            "name": "Calendar events by country",
+            "description": {
+              "content": "Calendar event types available for one or more countries.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calendar/events/country/china,canada?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calendar",
+                "events",
+                "country",
+                "china,canada"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "0ff02cda-a5ff-4df9-b97e-3707be871df4",
+          "name": "Calendar events by ID",
+          "request": {
+            "name": "Calendar events by ID",
+            "description": {
+              "content": "Calendar events by calendar ID.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calendar/calendarid/174108,160025,160030?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calendar",
+                "calendarid",
+                "174108,160025,160030"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "7ba50cac-9ab8-4719-8a8e-e7fe37bd996a",
+          "name": "Calendar updates",
+          "request": {
+            "name": "Calendar updates",
+            "description": {
+              "content": "Recently updated calendar events.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calendar/updates?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calendar",
+                "updates"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "12176efb-078d-4ce0-a206-1fd5370dcc5d",
+      "name": "Markets",
+      "item": [
+        {
+          "id": "15cfc371-e088-4e58-a9d8-927ab7431bea",
+          "name": "Commodities",
+          "request": {
+            "name": "Commodities",
+            "description": {
+              "content": "Current quotes for commodities.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/commodities?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "commodities"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "24ceadd4-6cea-4f82-9bc8-28be38c2c635",
+          "name": "Currencies",
+          "request": {
+            "name": "Currencies",
+            "description": {
+              "content": "Current quotes for currency pairs.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/currency?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "currency"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "40f1e8fb-d9a2-4b7c-add2-619dcf3af432",
+          "name": "Stock market indexes",
+          "request": {
+            "name": "Stock market indexes",
+            "description": {
+              "content": "Current quotes for stock market indexes.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/index?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "index"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "2b2239b3-da50-4a87-b76d-ee0e53ae6e76",
+          "name": "Cryptocurrencies",
+          "request": {
+            "name": "Cryptocurrencies",
+            "description": {
+              "content": "Current quotes for cryptocurrencies.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/crypto?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "crypto"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a628140b-489b-4ef5-9012-4ccb621cac83",
+          "name": "Government bonds",
+          "request": {
+            "name": "Government bonds",
+            "description": {
+              "content": "Government bond yields; filter by maturity (type=10Y) and country.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/bond?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "bond"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "02f1a479-65ba-48ed-a11e-946140712121",
+          "name": "Quotes by symbol",
+          "request": {
+            "name": "Quotes by symbol",
+            "description": {
+              "content": "Current quotes for specific market symbols.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/symbol/aapl:us?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "symbol",
+                "aapl:us"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "c796fb9a-7b88-4f6d-8c85-886e759eb1c4",
+          "name": "Markets historical",
+          "request": {
+            "name": "Markets historical",
+            "description": {
+              "content": "Daily historical prices for market symbols.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/historical/aapl:us?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "historical",
+                "aapl:us"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "7ace5974-1ece-42be-87fa-b543dcba67be",
+          "name": "Markets intraday",
+          "request": {
+            "name": "Markets intraday",
+            "description": {
+              "content": "Intraday prices for market symbols.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/intraday/aapl:us?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "intraday",
+                "aapl:us"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "f68960ed-b9ec-4973-81f3-9fc784d05934",
+          "name": "Markets search",
+          "request": {
+            "name": "Markets search",
+            "description": {
+              "content": "Search market instruments by term.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/markets/search/japan?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "markets",
+                "search",
+                "japan"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "336613bf-cab2-4939-a064-aaa08ff04eca",
+      "name": "Forecasts",
+      "item": [
+        {
+          "id": "d8f57f9e-305b-4192-ae17-1bf6d2751a7b",
+          "name": "Forecasts by country",
+          "request": {
+            "name": "Forecasts by country",
+            "description": {
+              "content": "Multi-quarter forecasts for all indicators of the given countries.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forecast/country/mexico,sweden?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forecast",
+                "country",
+                "mexico,sweden"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "dcf01ea5-adcf-495a-b719-d75888ffdbab",
+          "name": "Forecasts by indicator",
+          "request": {
+            "name": "Forecasts by indicator",
+            "description": {
+              "content": "Forecasts for one or more indicators (e.g. interest rate) across countries.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forecast/indicator/interest rate?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forecast",
+                "indicator",
+                "interest rate"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "cd865580-a673-4b97-b463-4663eef48279",
+          "name": "Forecasts by country and indicator",
+          "request": {
+            "name": "Forecasts by country and indicator",
+            "description": {
+              "content": "Forecasts by country and indicator.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forecast/country/mexico,sweden/indicator/gdp,population?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forecast",
+                "country",
+                "mexico,sweden",
+                "indicator",
+                "gdp,population"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "b494ff71-c489-4039-a30d-241d3c9d5a3a",
+          "name": "Forecasts by ticker",
+          "request": {
+            "name": "Forecasts by ticker",
+            "description": {
+              "content": "Forecasts by Trading Economics ticker.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/forecast/ticker/usurtot,wgdpchin?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forecast",
+                "ticker",
+                "usurtot,wgdpchin"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "041b89f1-cd1e-46c2-9460-ceb2b97e6aa3",
+      "name": "Historical",
+      "item": [
+        {
+          "id": "daf04b83-ac55-4f8c-85c9-b0e628cf7c69",
+          "name": "Historical by country and indicator",
+          "request": {
+            "name": "Historical by country and indicator",
+            "description": {
+              "content": "Full historical time series by country and indicator (max 10,000 rows).",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historical/country/mexico/indicator/gdp?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical",
+                "country",
+                "mexico",
+                "indicator",
+                "gdp"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "1986926a-a4a2-41a6-b99b-1d9f7b2b5fc6",
+          "name": "Historical by country, indicator, and dates",
+          "request": {
+            "name": "Historical by country, indicator, and dates",
+            "description": {
+              "content": "Historical time series bounded by a date range.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historical/country/mexico,sweden/indicator/gdp,population/2015-01-01/2015-12-31?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical",
+                "country",
+                "mexico,sweden",
+                "indicator",
+                "gdp,population",
+                "2015-01-01",
+                "2015-12-31"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "1127a157-5765-44d1-975c-e924203135c7",
+          "name": "Historical by ticker",
+          "request": {
+            "name": "Historical by ticker",
+            "description": {
+              "content": "Historical time series by ticker from a start date.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historical/ticker/usurtot/2015-03-01?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical",
+                "ticker",
+                "usurtot",
+                "2015-03-01"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "478aaf18-f847-46c4-9929-a2e9a510fc09",
+          "name": "Latest historical",
+          "request": {
+            "name": "Latest historical",
+            "description": {
+              "content": "Recently released or revised indicator values.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historical/latest?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical",
+                "latest"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "2159269e-c7bc-4e3d-8ed3-3a4b43cde3b3",
+          "name": "Historical updates",
+          "request": {
+            "name": "Historical updates",
+            "description": {
+              "content": "Recently updated historical records.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/historical/updates?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "historical",
+                "updates"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "a063cdb9-b2a2-4e15-b977-ab13be9cecb9",
+      "name": "Financials",
+      "item": [
+        {
+          "id": "7e49d5f2-d372-4dc3-9398-79e725c0f165",
+          "name": "Financials by category",
+          "request": {
+            "name": "Financials by category",
+            "description": {
+              "content": "Company financials snapshot by category.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/financials/category/assets?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "financials",
+                "category",
+                "assets"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "558dc7ef-688d-42bf-acb6-ded889ffd6f6",
+          "name": "Financials by symbol",
+          "request": {
+            "name": "Financials by symbol",
+            "description": {
+              "content": "Company financials snapshot by stock symbol.",
+              "type": "text/plain"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/financials/symbol/aapl:us?c={{apiKey}}&f=json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "financials",
+                "symbol",
+                "aapl:us"
+              ],
+              "query": [
+                {
+                  "key": "c",
+                  "value": "{{apiKey}}",
+                  "description": "API client credentials (key:secret)"
+                },
+                {
+                  "key": "f",
+                  "value": "json",
+                  "description": "Output format: json, csv, or html"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

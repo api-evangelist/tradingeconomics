@@ -1,0 +1,141 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Trading Economics
+providerId: tradingeconomics
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: true
+tags:
+- Economic Indicators
+- Interest Rates
+- Macroeconomics
+- Financial Data
+- Plans
+description: >-
+  Trading Economics sells API access by subscription, with pricing adjusted
+  to the features used, the volume of requests, and any redistribution of
+  the data. Published third-party comparisons (June 2026) place the
+  Standard plan at $149/month and the Professional plan at $299/month, both
+  billed yearly, with Enterprise on custom pricing; the provider's own
+  pricing page requires an account to display the current matrix. Trial
+  accounts are limited to 100,000 data points and 100 data requests. The
+  long-standing guest:guest sample-data account has been discontinued for
+  the REST API (verified live 2026-07-11).
+notes: >-
+  Plan prices were grounded from a June 2026 third-party comparison because
+  tradingeconomics.com/api/pricing.aspx renders its pricing matrix behind
+  scripts/login; re-verify against the provider's pricing page when
+  reconciling. Payment is accepted by credit card and PayPal, with bank
+  wire available for quarterly and yearly plans.
+sources:
+- https://tradingeconomics.com/api/pricing.aspx
+- https://docs.tradingeconomics.com/get_started/
+- https://fxmacrodata.com/articles/fxmacrodata-vs-trading-economics
+plans:
+- id: tradingeconomics-trial
+  name: Trial
+  type: trial
+  description: >-
+    Evaluation access granted with a developer account, limited to a fixed
+    number of data points and data requests.
+  entries:
+  - label: Data Points
+    name: trial_data_points
+    type: quota
+    metric: data_points
+    limit: 100000
+    timeFrame: trial
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Data Requests
+    name: trial_requests
+    type: quota
+    metric: requests
+    limit: 100
+    timeFrame: trial
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Indicators
+  - name: Economic Calendar
+  - name: Markets
+  - name: Forecasts
+  - name: Historical
+- id: tradingeconomics-standard
+  name: Standard
+  type: subscription
+  description: >-
+    Entry paid tier for API access to indicators, calendar, markets,
+    forecasts, and historical data, billed yearly.
+  entries:
+  - label: Standard Subscription
+    name: standard
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $149 per month billed yearly (per third-party comparison, June 2026)
+    userMultiplied: false
+  elements:
+  - name: Indicators
+  - name: Economic Calendar
+  - name: Markets
+  - name: Forecasts
+  - name: Historical
+  - name: Financials
+- id: tradingeconomics-professional
+  name: Professional
+  type: subscription
+  description: >-
+    Higher-volume paid tier with expanded request volumes and features,
+    billed yearly.
+  entries:
+  - label: Professional Subscription
+    name: professional
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $299 per month billed yearly (per third-party comparison, June 2026)
+    userMultiplied: false
+  elements:
+  - name: Indicators
+  - name: Economic Calendar
+  - name: Markets
+  - name: Forecasts
+  - name: Historical
+  - name: Financials
+  - name: Streaming (WebSocket)
+- id: tradingeconomics-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom pricing adjusted to features used, request volume, and data
+    redistribution rights. Contact Trading Economics.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume
+  - name: Redistribution Rights
+  - name: Streaming (WebSocket)
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

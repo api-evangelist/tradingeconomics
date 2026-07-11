@@ -1,0 +1,221 @@
+asyncapi: '2.6.0'
+id: 'urn:com:tradingeconomics:stream:websocket'
+info:
+  title: Trading Economics Streaming API (WebSocket)
+  version: '1.0.0'
+  description: |
+    AsyncAPI 2.6 description of the Trading Economics **WebSocket streaming
+    surface** at `wss://stream.tradingeconomics.com/`.
+
+    Unlike many data providers whose "streaming" is HTTP polling or SSE,
+    Trading Economics documents a true, persistent WebSocket connection.
+    Clients connect with their API client credentials passed on the
+    connection URL (`?client=key:secret`), then send JSON subscribe messages
+    naming a topic. Documented topics include:
+
+    - **Market symbols** (e.g. `EURUSD:CUR`, `AAPL:US`, `CL1:COM`) for live
+      quote ticks (https://docs.tradingeconomics.com/markets/streaming/)
+    - **calendar** for live economic calendar releases - actual values the
+      moment indicators like interest rate decisions and CPI are published
+      (https://docs.tradingeconomics.com/economic_calendar/streaming/)
+    - **news** for live news items
+      (https://docs.tradingeconomics.com/news/streaming/)
+    - **earnings** for earnings releases
+      (https://docs.tradingeconomics.com/financials/streaming/)
+
+    Per the markets streaming documentation, subscribing to more than a
+    single market topic requires a full key:secret credential pair; a plain
+    key is limited to the single market topic EURUSD:CUR.
+
+    The request/response REST surface (indicators, calendar, markets,
+    forecasts, historical, financials) is modeled in the companion OpenAPI
+    document at `openapi/tradingeconomics-openapi.yml`.
+  contact:
+    name: API Evangelist
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+  license:
+    name: API documentation - Trading Economics Terms of Service
+    url: https://tradingeconomics.com/terms-of-service.aspx
+  x-transport-notes:
+    transport: WebSocket
+    protocol: wss
+    direction: bidirectional (client subscribes, server pushes)
+    connectionURL: wss://stream.tradingeconomics.com/?client=key:secret
+    subscribeMessage: '{"topic": "subscribe", "to": "<market symbol or channel>"}'
+    channels: market symbols, calendar, news, earnings
+    source: https://docs.tradingeconomics.com/markets/streaming/
+defaultContentType: application/json
+servers:
+  production:
+    url: stream.tradingeconomics.com
+    protocol: wss
+    description: |
+      Trading Economics streaming server. Authorize by appending your API
+      client credentials to the connection URL as the `client` query
+      parameter (key:secret format), then send subscribe messages for each
+      topic you want to receive.
+    security:
+      - clientCredentials: []
+channels:
+  /:
+    description: |
+      Single WebSocket channel. After connecting, the client publishes one or
+      more subscribe messages naming a market symbol (e.g. EURUSD:CUR) or a
+      named channel (calendar, news, earnings). The server then pushes JSON
+      messages for each subscribed topic over the same connection.
+    publish:
+      operationId: subscribeToTopic
+      summary: Subscribe to a market symbol or named channel.
+      message:
+        $ref: '#/components/messages/SubscribeMessage'
+    subscribe:
+      operationId: receiveStreamMessages
+      summary: Receive pushed market ticks and release events.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/MarketTick'
+          - $ref: '#/components/messages/CalendarRelease'
+components:
+  securitySchemes:
+    clientCredentials:
+      type: httpApiKey
+      name: client
+      in: query
+      description: >-
+        API client credentials in key:secret format passed as the `client`
+        query parameter on the WebSocket connection URL.
+  messages:
+    SubscribeMessage:
+      name: SubscribeMessage
+      title: Subscribe message
+      summary: Client-to-server JSON message subscribing to a topic.
+      payload:
+        type: object
+        required:
+          - topic
+          - to
+        properties:
+          topic:
+            type: string
+            const: subscribe
+          to:
+            type: string
+            description: >-
+              Market symbol (e.g. EURUSD:CUR, AAPL:US, CL1:COM) or named
+              channel (calendar, news, earnings).
+            examples:
+              - EURUSD:CUR
+              - calendar
+      examples:
+        - name: subscribeCalendar
+          payload:
+            topic: subscribe
+            to: calendar
+        - name: subscribeEurUsd
+          payload:
+            topic: subscribe
+            to: EURUSD:CUR
+    MarketTick:
+      name: MarketTick
+      title: Market quote tick
+      summary: Server-pushed live quote update for a subscribed market symbol.
+      payload:
+        type: object
+        properties:
+          s:
+            type: string
+            description: Symbol.
+            example: EURUSD:CUR
+          price:
+            type: number
+            description: Latest market price.
+            example: 1.1057
+          pch:
+            type: number
+            description: Percentage change on the day.
+          nch:
+            type: number
+            description: Absolute net change on the day.
+          dt:
+            type: integer
+            description: Timestamp in epoch milliseconds.
+            example: 1681474172576
+          state:
+            type: string
+            description: Market state.
+            enum:
+              - open
+              - close
+          dhigh:
+            type: number
+            description: Day high.
+          dlow:
+            type: number
+            description: Day low.
+          o:
+            type: number
+            description: Opening price.
+          prev:
+            type: number
+            description: Previous closing price.
+          type:
+            type: string
+            example: currency
+          topic:
+            type: string
+            example: EURUSD
+    CalendarRelease:
+      name: CalendarRelease
+      title: Economic calendar release
+      summary: >-
+        Server-pushed event emitted the moment an economic indicator release
+        hits the calendar - for example a central bank interest rate decision
+        or a CPI print.
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            description: Name of the economic indicator event.
+            example: Retail Sales MoM
+          country:
+            type: string
+            description: Country issuing the data.
+          actual:
+            type: string
+            description: Latest released value.
+          previous:
+            type: string
+            description: Value for the prior period (after revision if any).
+          revised:
+            type: string
+            description: Previously reported value after revision.
+          forecast:
+            type: string
+            description: Average forecast among economists surveyed.
+          teforecast:
+            type: string
+            description: Trading Economics proprietary forecast.
+          date:
+            type: string
+            description: Release timestamp in UTC.
+          referenceDate:
+            type: string
+            description: Period the released data covers.
+          category:
+            type: string
+            description: Indicator classification.
+            example: Interest Rate
+          ticker:
+            type: string
+            description: Unique Trading Economics identifier.
+          importance:
+            type: integer
+            description: 1=low, 2=medium, 3=high.
+          unit:
+            type: string
+            example: '%'
+          topic:
+            type: string
+            example: calendar

@@ -1,0 +1,124 @@
+aid: tradingeconomics
+name: Trading Economics
+review:
+  question: Does Trading Economics expose a documented public WebSocket API?
+  answer: true
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: true
+  asyncapiScopeNote: |
+    Trading Economics documents a true, persistent WebSocket streaming
+    service at wss://stream.tradingeconomics.com/ - not SSE and not HTTP
+    polling. An AsyncAPI 2.6 document was created at
+    asyncapi/tradingeconomics-asyncapi.yml modeling the connection
+    (credentials on the connection URL as ?client=key:secret), the JSON
+    subscribe message ({"topic": "subscribe", "to": "..."}), and the two
+    principal server-pushed message shapes documented - live market quote
+    ticks and economic calendar release events. News and earnings channels
+    are documented by the provider and noted in the spec.
+findings:
+  summary: |
+    Trading Economics exposes a documented public WebSocket API. The
+    streaming service at wss://stream.tradingeconomics.com/ accepts a
+    persistent WebSocket connection authorized with API client credentials
+    passed as the client query parameter, after which the client sends JSON
+    subscribe messages naming either individual market symbols (EURUSD:CUR,
+    AAPL:US, CL1:COM) or named channels - calendar, news, and earnings. The
+    server pushes JSON messages over the open socket: quote ticks with
+    price, percentage and net change, day high/low, open, previous close,
+    epoch-millisecond timestamp, and market state; and calendar release
+    events with actual, previous, revised, consensus forecast, and Trading
+    Economics forecast values the moment an indicator is published. Per the
+    markets streaming documentation, subscribing to more than a single
+    market topic requires a full key:secret credential pair; a plain key is
+    limited to the single topic EURUSD:CUR. The main data surface
+    (indicators, calendar, markets, forecasts, historical, financials) is
+    request/response REST over HTTPS at https://api.tradingeconomics.com.
+  accessModel: |
+    The documentation is fully public, but API access requires a paid
+    subscription keyed at developer.tradingeconomics.com. The long-standing
+    guest:guest sample-data account has been discontinued for the REST API:
+    a live request to https://api.tradingeconomics.com/country/mexico with
+    c=guest:guest on 2026-07-11 returned "We are sorry, but the guest
+    account has been discontinued" with a pointer to the pricing page.
+    Trial accounts are limited to 100,000 data points and 100 data
+    requests per the pricing page.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.tradingeconomics.com
+      documented: true
+      note: Indicators, economic calendar, markets, forecasts, historical, and financials endpoints. JSON default, CSV and HTML via f parameter. Auth via c query parameter (key:secret) or Authorization header.
+    - protocol: WebSocket
+      scheme: wss
+      baseURL: wss://stream.tradingeconomics.com
+      documented: true
+      note: Persistent WebSocket. Authorize with ?client=key:secret on the connection URL, then send JSON subscribe messages. Documented topics are market symbols plus the calendar, news, and earnings channels.
+  endpointsConfirmedRest:
+    - GET https://api.tradingeconomics.com/country/{country}
+    - GET https://api.tradingeconomics.com/country/all/{indicator}
+    - GET https://api.tradingeconomics.com/country/ticker/{ticker}
+    - GET https://api.tradingeconomics.com/credit-ratings
+    - GET https://api.tradingeconomics.com/credit-ratings/country/{country}
+    - GET https://api.tradingeconomics.com/calendar
+    - GET https://api.tradingeconomics.com/calendar/country/{countries}/{start}/{end}
+    - GET https://api.tradingeconomics.com/calendar/events/country/{countries}
+    - GET https://api.tradingeconomics.com/calendar/calendarid/{ids}
+    - GET https://api.tradingeconomics.com/calendar/updates
+    - GET https://api.tradingeconomics.com/markets/commodities
+    - GET https://api.tradingeconomics.com/markets/currency
+    - GET https://api.tradingeconomics.com/markets/index
+    - GET https://api.tradingeconomics.com/markets/crypto
+    - GET https://api.tradingeconomics.com/markets/bond
+    - GET https://api.tradingeconomics.com/markets/symbol/{symbols}
+    - GET https://api.tradingeconomics.com/markets/historical/{symbols}
+    - GET https://api.tradingeconomics.com/markets/intraday/{symbols}
+    - GET https://api.tradingeconomics.com/markets/search/{term}
+    - GET https://api.tradingeconomics.com/forecast/country/{countries}
+    - GET https://api.tradingeconomics.com/forecast/indicator/{indicators}
+    - GET https://api.tradingeconomics.com/forecast/country/{countries}/indicator/{indicators}
+    - GET https://api.tradingeconomics.com/forecast/ticker/{tickers}
+    - GET https://api.tradingeconomics.com/historical/country/{countries}/indicator/{indicators}
+    - GET https://api.tradingeconomics.com/historical/country/{countries}/indicator/{indicators}/{start}/{end}
+    - GET https://api.tradingeconomics.com/historical/ticker/{ticker}/{start}
+    - GET https://api.tradingeconomics.com/historical/latest
+    - GET https://api.tradingeconomics.com/historical/updates
+    - GET https://api.tradingeconomics.com/financials/category/{category}
+    - GET https://api.tradingeconomics.com/financials/symbol/{symbol}
+  endpointsConfirmedWebSocket:
+    - CONNECT wss://stream.tradingeconomics.com/?client=key:secret
+sources:
+  - url: https://docs.tradingeconomics.com/get_started/
+    type: Documentation
+    note: Base URL https://api.tradingeconomics.com, auth via c query parameter or Authorization header, JSON/CSV/HTML formats, key required from developer.tradingeconomics.com.
+  - url: https://docs.tradingeconomics.com/markets/streaming/
+    type: Documentation
+    note: WebSocket connection at wss://stream.tradingeconomics.com/ with client credentials on the URL, subscribe messages per market symbol, tick message fields (s, price, pch, nch, dt, state, dhigh, dlow, o, prev). Single-topic EURUSD:CUR limit without full key:secret.
+  - url: https://docs.tradingeconomics.com/economic_calendar/streaming/
+    type: Documentation
+    note: Calendar channel subscription ({"topic" subscribe, "to" calendar}) and release event fields (event, country, actual, previous, revised, forecast, teforecast, importance, ticker, unit).
+  - url: https://docs.tradingeconomics.com/news/streaming/
+    type: Documentation
+    note: News streaming channel over the same WebSocket service.
+  - url: https://docs.tradingeconomics.com/financials/streaming/
+    type: Documentation
+    note: Earnings releases streaming channel over the same WebSocket service.
+  - url: https://docs.tradingeconomics.com/get_started/rate-limits/
+    type: Documentation
+    note: General limit of 2 requests per second; 10,000 rows per historical call; 1,000 rows per calendar call; 260-character URL limit.
+  - url: https://tradingeconomics.com/api/pricing.aspx
+    type: Pricing
+    note: Plans page. Trial users limited to 100,000 data points and 100 data requests. Live REST check with guest credentials on 2026-07-11 returned a guest-account-discontinued message pointing here.
+  - url: https://github.com/tradingeconomics
+    type: GitHubOrganization
+    note: Official client libraries - tradingeconomics-python, tradingeconomics-js, plus the tradingeconomics API code examples repository and Jupyter notebooks.
+actions:
+  asyncapiPath: asyncapi/tradingeconomics-asyncapi.yml
+  apisYmlUpdated: true
+  reason: |
+    A documented WebSocket protocol surface exists at
+    wss://stream.tradingeconomics.com/, so the answer is true and an
+    AsyncAPI 2.6 document was authored covering the subscribe message and
+    the market tick and calendar release message payloads as documented by
+    the provider. The streaming API is also listed as its own logical API
+    in apis.yml with the AsyncAPI property attached.
