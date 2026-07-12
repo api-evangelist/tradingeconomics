@@ -154,6 +154,12 @@ apis:
     calendar releases, news, and earnings via subscribe topics, authorized with
     API client credentials.
 common:
+- type: VulnerabilityDisclosure
+  url: security/tradingeconomics-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/tradingeconomics-domain-security.yml
+- type: Authentication
+  url: authentication/tradingeconomics-authentication.yml
 - type: Website
   url: https://tradingeconomics.com
 - type: Documentation

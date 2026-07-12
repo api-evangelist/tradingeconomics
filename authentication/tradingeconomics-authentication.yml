@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tradingeconomics-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: clientKeyQuery
+  type: apiKey
+  in: query
+  parameter: c
+  description: API client credentials in `key:secret` format passed as the `c` query parameter.
+    Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+  sources:
+  - openapi/tradingeconomics-openapi.yml
+- name: clientKeyHeader
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API client credentials passed in the Authorization header.
+  sources:
+  - openapi/tradingeconomics-openapi.yml
