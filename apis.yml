@@ -154,6 +154,8 @@ apis:
     calendar releases, news, and earnings via subscribe topics, authorized with
     API client credentials.
 common:
+- type: AgenticAccess
+  url: agentic-access/tradingeconomics-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/tradingeconomics-vulnerability-disclosure.yml
 - type: DomainSecurity

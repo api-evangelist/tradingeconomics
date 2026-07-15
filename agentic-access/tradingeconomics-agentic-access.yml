@@ -1,0 +1,314 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/tradingeconomics-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 30
+  by_action_class:
+    connected: 30
+  by_consequence:
+    read: 30
+  human_in_the_loop_required: 0
+operations:
+- path: /country/{country}
+  method: get
+  operationId: getIndicatorsByCountry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /country/all/{indicator}
+  method: get
+  operationId: getCountriesByIndicator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /country/ticker/{ticker}
+  method: get
+  operationId: getIndicatorByTicker
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /credit-ratings
+  method: get
+  operationId: getCreditRatings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /credit-ratings/country/{country}
+  method: get
+  operationId: getCreditRatingsByCountry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar
+  method: get
+  operationId: getCalendar
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar/country/{countries}/{startDate}/{endDate}
+  method: get
+  operationId: getCalendarByCountryAndDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar/events/country/{countries}
+  method: get
+  operationId: getCalendarEventsByCountry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar/calendarid/{ids}
+  method: get
+  operationId: getCalendarEventsById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar/updates
+  method: get
+  operationId: getCalendarUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/commodities
+  method: get
+  operationId: getMarketsCommodities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/currency
+  method: get
+  operationId: getMarketsCurrencies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/index
+  method: get
+  operationId: getMarketsIndexes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/crypto
+  method: get
+  operationId: getMarketsCrypto
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/bond
+  method: get
+  operationId: getMarketsBonds
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/symbol/{symbols}
+  method: get
+  operationId: getMarketsBySymbol
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/historical/{symbols}
+  method: get
+  operationId: getMarketsHistorical
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/intraday/{symbols}
+  method: get
+  operationId: getMarketsIntraday
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /markets/search/{term}
+  method: get
+  operationId: searchMarkets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /forecast/country/{countries}
+  method: get
+  operationId: getForecastsByCountry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /forecast/indicator/{indicators}
+  method: get
+  operationId: getForecastsByIndicator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /forecast/country/{countries}/indicator/{indicators}
+  method: get
+  operationId: getForecastsByCountryAndIndicator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /forecast/ticker/{tickers}
+  method: get
+  operationId: getForecastsByTicker
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /historical/country/{countries}/indicator/{indicators}
+  method: get
+  operationId: getHistoricalByCountryAndIndicator
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /historical/country/{countries}/indicator/{indicators}/{startDate}/{endDate}
+  method: get
+  operationId: getHistoricalByCountryIndicatorAndDates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /historical/ticker/{ticker}/{startDate}
+  method: get
+  operationId: getHistoricalByTicker
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /historical/latest
+  method: get
+  operationId: getHistoricalLatest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /historical/updates
+  method: get
+  operationId: getHistoricalUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /financials/category/{category}
+  method: get
+  operationId: getFinancialsByCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /financials/symbol/{symbol}
+  method: get
+  operationId: getFinancialsBySymbol
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
