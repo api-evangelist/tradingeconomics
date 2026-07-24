@@ -1,0 +1,115 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar Financials API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Financials
+paths:
+  /financials/category/{category}:
+    get:
+      operationId: getFinancialsByCategory
+      tags:
+      - Financials
+      summary: Company financials snapshot by category.
+      parameters:
+      - name: category
+        in: path
+        required: true
+        description: Financial category (e.g. `assets`).
+        schema:
+          type: string
+        example: assets
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Financial'
+  /financials/symbol/{symbol}:
+    get:
+      operationId: getFinancialsBySymbol
+      tags:
+      - Financials
+      summary: Company financials snapshot by stock symbol.
+      parameters:
+      - name: symbol
+        in: path
+        required: true
+        description: Stock symbol (e.g. `aapl:us`).
+        schema:
+          type: string
+        example: aapl:us
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Financial'
+components:
+  schemas:
+    Financial:
+      type: object
+      description: Company fundamentals record.
+      properties:
+        Symbol:
+          type: string
+          example: AAPL:US
+        Name:
+          type: string
+        Country:
+          type: string
+        Category:
+          type: string
+        Sector:
+          type: string
+        Value:
+          type: number
+        Unit:
+          type: string
+        Date:
+          type: string
+          format: date-time
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com

@@ -1,0 +1,234 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar Historical API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Historical
+paths:
+  /historical/country/{countries}/indicator/{indicators}:
+    get:
+      operationId: getHistoricalByCountryAndIndicator
+      tags:
+      - Historical
+      summary: Historical time series by country and indicator.
+      description: Returns the historical time series for the given countries and indicators (both comma-separatable). Limited to 10,000 rows per request.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        schema:
+          type: string
+        example: mexico
+      - name: indicators
+        in: path
+        required: true
+        schema:
+          type: string
+        example: gdp
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalValue'
+  /historical/country/{countries}/indicator/{indicators}/{startDate}/{endDate}:
+    get:
+      operationId: getHistoricalByCountryIndicatorAndDates
+      tags:
+      - Historical
+      summary: Historical time series by country, indicator, and date range.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        schema:
+          type: string
+        example: mexico,sweden
+      - name: indicators
+        in: path
+        required: true
+        schema:
+          type: string
+        example: gdp,population
+      - name: startDate
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2015-01-01'
+      - name: endDate
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2015-12-31'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalValue'
+  /historical/ticker/{ticker}/{startDate}:
+    get:
+      operationId: getHistoricalByTicker
+      tags:
+      - Historical
+      summary: Historical time series by ticker from a start date.
+      parameters:
+      - name: ticker
+        in: path
+        required: true
+        schema:
+          type: string
+        example: usurtot
+      - name: startDate
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2015-03-01'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalValue'
+  /historical/latest:
+    get:
+      operationId: getHistoricalLatest
+      tags:
+      - Historical
+      summary: Recently released or revised indicator values.
+      parameters:
+      - name: country
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalValue'
+  /historical/updates:
+    get:
+      operationId: getHistoricalUpdates
+      tags:
+      - Historical
+      summary: Recently updated historical records.
+      parameters:
+      - name: d1
+        in: query
+        required: false
+        description: Start date filter (yyyy-mm-dd).
+        schema:
+          type: string
+          format: date
+      - name: d2
+        in: query
+        required: false
+        description: End date filter (yyyy-mm-dd).
+        schema:
+          type: string
+          format: date
+      - name: lu
+        in: query
+        required: false
+        description: Last-update date filter (yyyy-mm-dd).
+        schema:
+          type: string
+          format: date
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HistoricalValue'
+components:
+  schemas:
+    HistoricalValue:
+      type: object
+      description: One observation in an indicator's historical time series.
+      properties:
+        Country:
+          type: string
+        Category:
+          type: string
+        DateTime:
+          type: string
+          format: date-time
+        Value:
+          type: number
+        Frequency:
+          type: string
+        HistoricalDataSymbol:
+          type: string
+        LastUpdate:
+          type: string
+          format: date-time
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com

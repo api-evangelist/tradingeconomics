@@ -1,0 +1,181 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar Forecasts API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Forecasts
+paths:
+  /forecast/country/{countries}:
+    get:
+      operationId: getForecastsByCountry
+      tags:
+      - Forecasts
+      summary: Indicator forecasts for one or more countries.
+      description: Returns multi-quarter forecasts for all economic indicators of the given countries, built with the Trading Economics proprietary global macro model and analyst expectations.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        description: Country name, or comma-separated list (e.g. `mexico,sweden`).
+        schema:
+          type: string
+        example: mexico
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forecast'
+  /forecast/indicator/{indicators}:
+    get:
+      operationId: getForecastsByIndicator
+      tags:
+      - Forecasts
+      summary: Forecasts for one or more indicators across countries.
+      parameters:
+      - name: indicators
+        in: path
+        required: true
+        description: Indicator name(s), comma-separated (e.g. `interest rate,gdp`).
+        schema:
+          type: string
+        example: interest rate
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forecast'
+  /forecast/country/{countries}/indicator/{indicators}:
+    get:
+      operationId: getForecastsByCountryAndIndicator
+      tags:
+      - Forecasts
+      summary: Forecasts by country and indicator.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        schema:
+          type: string
+        example: mexico,sweden
+      - name: indicators
+        in: path
+        required: true
+        schema:
+          type: string
+        example: gdp,population
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forecast'
+  /forecast/ticker/{tickers}:
+    get:
+      operationId: getForecastsByTicker
+      tags:
+      - Forecasts
+      summary: Forecasts by Trading Economics ticker.
+      parameters:
+      - name: tickers
+        in: path
+        required: true
+        description: Comma-separated tickers (e.g. `usurtot,wgdpchin`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forecast'
+components:
+  schemas:
+    Forecast:
+      type: object
+      description: Multi-quarter forecast for an economic indicator.
+      properties:
+        Country:
+          type: string
+        Category:
+          type: string
+          example: Interest Rate
+        Title:
+          type: string
+        LatestValue:
+          type: number
+        LatestValueDate:
+          type: string
+          format: date-time
+        Forecast1:
+          type: number
+          description: Forecast for the next quarter.
+        Forecast2:
+          type: number
+        Forecast3:
+          type: number
+        Forecast4:
+          type: number
+        ForecastDate1:
+          type: string
+        ForecastDate2:
+          type: string
+        ForecastDate3:
+          type: string
+        ForecastDate4:
+          type: string
+        HistoricalDataSymbol:
+          type: string
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com

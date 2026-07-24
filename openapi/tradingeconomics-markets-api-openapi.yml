@@ -1,0 +1,333 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar Markets API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Markets
+paths:
+  /markets/commodities:
+    get:
+      operationId: getMarketsCommodities
+      tags:
+      - Markets
+      summary: Current quotes for commodities.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/currency:
+    get:
+      operationId: getMarketsCurrencies
+      tags:
+      - Markets
+      summary: Current quotes for currency pairs.
+      parameters:
+      - name: cross
+        in: query
+        required: false
+        description: Filter crosses of a base currency (e.g. `EUR`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/index:
+    get:
+      operationId: getMarketsIndexes
+      tags:
+      - Markets
+      summary: Current quotes for stock market indexes.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/crypto:
+    get:
+      operationId: getMarketsCrypto
+      tags:
+      - Markets
+      summary: Current quotes for cryptocurrencies.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/bond:
+    get:
+      operationId: getMarketsBonds
+      tags:
+      - Markets
+      summary: Current government bond yields.
+      description: Returns government bond yields. Filter by maturity with `type` (1M, 3M, 6M, 52W, 2Y, 3Y, 5Y, 7Y, 10Y, 15Y, 20Y, 30Y) and by country with `country` - the market-side complement to policy interest rate series.
+      parameters:
+      - name: type
+        in: query
+        required: false
+        description: Bond maturity (e.g. `10Y`).
+        schema:
+          type: string
+          enum:
+          - 1M
+          - 3M
+          - 6M
+          - 52W
+          - 2Y
+          - 3Y
+          - 5Y
+          - 7Y
+          - 10Y
+          - 15Y
+          - 20Y
+          - 30Y
+      - name: country
+        in: query
+        required: false
+        description: Filter by country (e.g. `france`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/symbol/{symbols}:
+    get:
+      operationId: getMarketsBySymbol
+      tags:
+      - Markets
+      summary: Current quotes for specific market symbols.
+      parameters:
+      - name: symbols
+        in: path
+        required: true
+        description: Comma-separated market symbols (e.g. `aapl:us,indu:ind`).
+        schema:
+          type: string
+        example: aapl:us
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+  /markets/historical/{symbols}:
+    get:
+      operationId: getMarketsHistorical
+      tags:
+      - Markets
+      summary: Daily historical prices for market symbols.
+      parameters:
+      - name: symbols
+        in: path
+        required: true
+        description: Comma-separated market symbols.
+        schema:
+          type: string
+      - name: d1
+        in: query
+        required: false
+        description: Start date (yyyy-mm-dd).
+        schema:
+          type: string
+          format: date
+      - name: d2
+        in: query
+        required: false
+        description: End date (yyyy-mm-dd).
+        schema:
+          type: string
+          format: date
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketHistoricalPrice'
+  /markets/intraday/{symbols}:
+    get:
+      operationId: getMarketsIntraday
+      tags:
+      - Markets
+      summary: Intraday prices for market symbols.
+      parameters:
+      - name: symbols
+        in: path
+        required: true
+        description: Comma-separated market symbols.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketHistoricalPrice'
+  /markets/search/{term}:
+    get:
+      operationId: searchMarkets
+      tags:
+      - Markets
+      summary: Search market instruments by term.
+      parameters:
+      - name: term
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: category
+        in: query
+        required: false
+        description: Restrict search to a category (e.g. `index`, `bond`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketQuote'
+components:
+  schemas:
+    MarketQuote:
+      type: object
+      description: Current quote for a market instrument.
+      properties:
+        Symbol:
+          type: string
+          example: EURUSD:CUR
+        Ticker:
+          type: string
+        Name:
+          type: string
+        Country:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Last:
+          type: number
+        Group:
+          type: string
+        DailyChange:
+          type: number
+        DailyPercentualChange:
+          type: number
+        WeeklyChange:
+          type: number
+        MonthlyChange:
+          type: number
+        YearlyChange:
+          type: number
+        YTDChange:
+          type: number
+        yesterday:
+          type: number
+        lastWeek:
+          type: number
+        lastMonth:
+          type: number
+        lastYear:
+          type: number
+        unit:
+          type: string
+    MarketHistoricalPrice:
+      type: object
+      description: Historical or intraday price bar for a market symbol.
+      properties:
+        Symbol:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Open:
+          type: number
+        High:
+          type: number
+        Low:
+          type: number
+        Close:
+          type: number
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com

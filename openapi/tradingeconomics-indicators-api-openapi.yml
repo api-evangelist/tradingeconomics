@@ -1,0 +1,229 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar Indicators API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Indicators
+paths:
+  /country/{country}:
+    get:
+      operationId: getIndicatorsByCountry
+      tags:
+      - Indicators
+      summary: Latest indicator values for one or more countries.
+      description: Returns a snapshot of the latest values for all economic indicators for the given country (or comma-separated countries), including interest rates, inflation, GDP, and unemployment. Optionally filter to a category group such as `gdp` with the `group` parameter.
+      parameters:
+      - name: country
+        in: path
+        required: true
+        description: Country name, or comma-separated list (e.g. `mexico,sweden`).
+        schema:
+          type: string
+        example: mexico
+      - name: group
+        in: query
+        required: false
+        description: Filter results to a category group (e.g. `gdp`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indicator'
+  /country/all/{indicator}:
+    get:
+      operationId: getCountriesByIndicator
+      tags:
+      - Indicators
+      summary: Latest values of one indicator across all countries.
+      description: Returns the latest value of a single indicator - such as `interest rate`, `inflation rate`, or `gdp` - for every country covered, supporting cross-country comparison of macroeconomic series.
+      parameters:
+      - name: indicator
+        in: path
+        required: true
+        description: Indicator name (e.g. `interest rate`, `gdp`).
+        schema:
+          type: string
+        example: interest rate
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indicator'
+  /country/ticker/{ticker}:
+    get:
+      operationId: getIndicatorByTicker
+      tags:
+      - Indicators
+      summary: Latest indicator value by Trading Economics ticker.
+      parameters:
+      - name: ticker
+        in: path
+        required: true
+        description: Trading Economics indicator ticker (e.g. `usurtot`).
+        schema:
+          type: string
+        example: usurtot
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Indicator'
+  /credit-ratings:
+    get:
+      operationId: getCreditRatings
+      tags:
+      - Indicators
+      summary: Sovereign credit ratings for all countries.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreditRating'
+  /credit-ratings/country/{country}:
+    get:
+      operationId: getCreditRatingsByCountry
+      tags:
+      - Indicators
+      summary: Sovereign credit ratings for one or more countries.
+      parameters:
+      - name: country
+        in: path
+        required: true
+        description: Country name, or comma-separated list (e.g. `mexico,sweden`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreditRating'
+components:
+  schemas:
+    Indicator:
+      type: object
+      description: Latest value of an economic indicator for a country.
+      properties:
+        Country:
+          type: string
+          example: Mexico
+        Category:
+          type: string
+          example: Interest Rate
+        Title:
+          type: string
+          example: Mexico Interest Rate
+        LatestValue:
+          type: number
+        LatestValueDate:
+          type: string
+          format: date-time
+        PreviousValue:
+          type: number
+        PreviousValueDate:
+          type: string
+          format: date-time
+        Source:
+          type: string
+        Unit:
+          type: string
+          example: percent
+        Frequency:
+          type: string
+          example: Daily
+        HistoricalDataSymbol:
+          type: string
+          example: MXONBR
+        CategoryGroup:
+          type: string
+          example: Money
+        LastUpdate:
+          type: string
+          format: date-time
+    CreditRating:
+      type: object
+      description: Sovereign credit rating assessment for a country.
+      properties:
+        Country:
+          type: string
+        TE:
+          type: string
+          description: Trading Economics credit rating score.
+        TE_Outlook:
+          type: string
+        SP:
+          type: string
+          description: Standard and Poor's rating.
+        SP_Outlook:
+          type: string
+        Moodys:
+          type: string
+        Moodys_Outlook:
+          type: string
+        Fitch:
+          type: string
+        Fitch_Outlook:
+          type: string
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com

@@ -1,0 +1,226 @@
+openapi: 3.0.1
+info:
+  title: Trading Economics Economic Calendar API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  termsOfService: https://tradingeconomics.com/terms-of-service.aspx
+  contact:
+    name: Trading Economics
+    url: https://tradingeconomics.com/contact.aspx
+  version: '1.0'
+servers:
+- url: https://api.tradingeconomics.com
+security:
+- clientKeyQuery: []
+- clientKeyHeader: []
+tags:
+- name: Economic Calendar
+paths:
+  /calendar:
+    get:
+      operationId: getCalendar
+      tags:
+      - Economic Calendar
+      summary: Upcoming and recent economic calendar events.
+      description: Returns scheduled economic events - central bank interest rate decisions, CPI, GDP, employment releases, and more - with actual, previous, consensus forecast, and Trading Economics forecast values. Filter by importance (1=low, 2=medium, 3=high). Limited to 1,000 rows per request.
+      parameters:
+      - name: importance
+        in: query
+        required: false
+        description: Event importance filter (1=low, 2=medium, 3=high).
+        schema:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+  /calendar/country/{countries}/{startDate}/{endDate}:
+    get:
+      operationId: getCalendarByCountryAndDate
+      tags:
+      - Economic Calendar
+      summary: Calendar events by country and date range.
+      description: Returns calendar events for the given countries (use `All` for every country) between two dates, optionally filtered by importance.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        description: Country name(s) comma-separated, or `All`.
+        schema:
+          type: string
+        example: All
+      - name: startDate
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-07-01'
+      - name: endDate
+        in: path
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-07-31'
+      - name: importance
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+  /calendar/events/country/{countries}:
+    get:
+      operationId: getCalendarEventsByCountry
+      tags:
+      - Economic Calendar
+      summary: Calendar event types available for one or more countries.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        description: Country name, or comma-separated list (e.g. `china,canada`).
+        schema:
+          type: string
+        example: china
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+  /calendar/calendarid/{ids}:
+    get:
+      operationId: getCalendarEventsById
+      tags:
+      - Economic Calendar
+      summary: Calendar events by calendar ID.
+      parameters:
+      - name: ids
+        in: path
+        required: true
+        description: Comma-separated calendar IDs (e.g. `174108,160025,160030`).
+        schema:
+          type: string
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+  /calendar/updates:
+    get:
+      operationId: getCalendarUpdates
+      tags:
+      - Economic Calendar
+      summary: Recently updated calendar events.
+      parameters:
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEvent'
+components:
+  schemas:
+    CalendarEvent:
+      type: object
+      description: A scheduled economic calendar event.
+      properties:
+        CalendarId:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Country:
+          type: string
+        Category:
+          type: string
+          example: Interest Rate
+        Event:
+          type: string
+          example: Fed Interest Rate Decision
+        Reference:
+          type: string
+        ReferenceDate:
+          type: string
+        Actual:
+          type: string
+        Previous:
+          type: string
+        Forecast:
+          type: string
+          description: Average forecast among economists surveyed.
+        TEForecast:
+          type: string
+          description: Trading Economics proprietary forecast.
+        Importance:
+          type: integer
+          description: 1=low, 2=medium, 3=high.
+        Ticker:
+          type: string
+        Unit:
+          type: string
+        LastUpdate:
+          type: string
+          format: date-time
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
+  securitySchemes:
+    clientKeyQuery:
+      type: apiKey
+      in: query
+      name: c
+      description: API client credentials in `key:secret` format passed as the `c` query parameter. Obtain a key by subscribing to a plan at developer.tradingeconomics.com.
+    clientKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API client credentials passed in the Authorization header.
+externalDocs:
+  description: Trading Economics API Documentation
+  url: https://docs.tradingeconomics.com
