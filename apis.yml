@@ -7,7 +7,20 @@ description: Trading Economics provides economic data for 196 countries - more t
   GDP, and unemployment - alongside an economic calendar, proprietary macro forecasts,
   historical data, and live market quotes, all delivered through a single REST API
   and a WebSocket streaming service.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tradingeconomics.png
 tags:
 - Economic Indicators
 - Interest Rates
@@ -20,117 +33,6 @@ created: '2026-07-11'
 modified: '2026-07-11'
 specificationVersion: '0.19'
 apis:
-- aid: tradingeconomics:tradingeconomics-indicators-api
-  name: Trading Economics Indicators API
-  tags:
-  - Economic Indicators
-  - Interest Rates
-  - Inflation
-  - GDP
-  - Credit Ratings
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/indicators/snapshot/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Latest values for more than 15,000 economic indicator time series
-    sourced directly from official statistics agencies and central banks - interest
-    rates, inflation, GDP, unemployment, trade, and more - queryable by country,
-    by indicator across all countries, by ticker, plus sovereign credit ratings.
-- aid: tradingeconomics:tradingeconomics-economic-calendar-api
-  name: Trading Economics Economic Calendar API
-  tags:
-  - Economic Calendar
-  - Central Banks
-  - Interest Rate Decisions
-  - Releases
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/economic_calendar/snapshot/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Around 1,600 scheduled economic events per month across more than
-    150 countries - central bank rate decisions, CPI, GDP, and employment releases
-    - with actual, previous, consensus forecast, and Trading Economics forecast
-    values, filterable by country, date range, importance, and calendar ID.
-- aid: tradingeconomics:tradingeconomics-markets-api
-  name: Trading Economics Markets API
-  tags:
-  - Markets
-  - Bonds
-  - Currencies
-  - Commodities
-  - Stock Indexes
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/markets/snapshot/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/markets/snapshot/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Current quotes for commodities, currencies, stock market indexes,
-    cryptocurrencies, and government bond yields across maturities from 1M to 30Y,
-    plus per-symbol quotes, daily and intraday historical prices, and market search.
-- aid: tradingeconomics:tradingeconomics-forecasts-api
-  name: Trading Economics Forecasts API
-  tags:
-  - Forecasts
-  - Macroeconomics
-  - Interest Rates
-  - Projections
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/forecasts/indicators/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/forecasts/indicators/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Multi-quarter projections for economic indicators - including interest
-    rates, inflation, and GDP - built with a proprietary global macro model and
-    analyst expectations, queryable by country, indicator, country-and-indicator,
-    or ticker, plus forecasts for market instruments.
-- aid: tradingeconomics:tradingeconomics-historical-api
-  name: Trading Economics Historical API
-  tags:
-  - Historical Data
-  - Time Series
-  - Economic Indicators
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/indicators/historical/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/indicators/historical/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Full historical time series behind every indicator - by country and
-    indicator with optional date ranges, by ticker, plus latest-updates endpoints
-    for syncing revisions - capped at 10,000 rows per request.
-- aid: tradingeconomics:tradingeconomics-financials-api
-  name: Trading Economics Financials API
-  tags:
-  - Financials
-  - Earnings
-  - Company Fundamentals
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.tradingeconomics.com/financials/snapshot/
-  baseURL: https://api.tradingeconomics.com
-  properties:
-  - url: https://docs.tradingeconomics.com/financials/snapshot/
-    type: Documentation
-  - url: openapi/tradingeconomics-openapi.yml
-    type: OpenAPI
-  description: Company fundamentals by financial category or stock symbol, plus
-    earnings and revenue calendars, dividends, IPOs, stock splits, and sector
-    listings for listed companies.
 - aid: tradingeconomics:tradingeconomics-streaming-api
   name: Trading Economics Streaming API
   tags:
@@ -149,10 +51,142 @@ apis:
     type: Documentation
   - url: asyncapi/tradingeconomics-asyncapi.yml
     type: AsyncAPI
-  description: Persistent WebSocket connection at wss://stream.tradingeconomics.com
-    delivering live market quote ticks by symbol and push notifications for economic
-    calendar releases, news, and earnings via subscribe topics, authorized with
-    API client credentials.
+  description: >-
+    Persistent WebSocket connection at wss://stream.tradingeconomics.com delivering live market quote
+    ticks by symbol and push notifications for economic calendar releases, news, and earnings via subscribe
+    topics, authorized with API client credentials.
+- aid: tradingeconomics:tradingeconomics-economic-calendar-api
+  name: Trading Economics Economic Calendar API
+  description: The Economic Calendar API from Trading Economics — 5 operation(s) for economic calendar.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Economic Calendar
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-economic-calendar-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
+- aid: tradingeconomics:tradingeconomics-financials-api
+  name: Trading Economics Financials API
+  description: The Financials API from Trading Economics — 2 operation(s) for financials.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Financials
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-financials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
+- aid: tradingeconomics:tradingeconomics-forecasts-api
+  name: Trading Economics Forecasts API
+  description: The Forecasts API from Trading Economics — 4 operation(s) for forecasts.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Forecasts
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-forecasts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
+- aid: tradingeconomics:tradingeconomics-historical-api
+  name: Trading Economics Historical API
+  description: The Historical API from Trading Economics — 5 operation(s) for historical.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Historical
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-historical-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
+- aid: tradingeconomics:tradingeconomics-indicators-api
+  name: Trading Economics Indicators API
+  description: The Indicators API from Trading Economics — 5 operation(s) for indicators.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Indicators
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-indicators-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
+- aid: tradingeconomics:tradingeconomics-markets-api
+  name: Trading Economics Markets API
+  description: The Markets API from Trading Economics — 9 operation(s) for markets.
+  humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
+  baseURL: https://api.tradingeconomics.com
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/tradingeconomics-markets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/economic_calendar/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/markets/snapshot/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/forecasts/indicators/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/indicators/historical/
+  - type: Documentation
+    url: https://docs.tradingeconomics.com/financials/snapshot/
 common:
 - type: AgenticAccess
   url: agentic-access/tradingeconomics-agentic-access.yml
