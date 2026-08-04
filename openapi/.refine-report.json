@@ -1,0 +1,24 @@
+{
+  "provider": "tradingeconomics",
+  "sources": [
+    "tradingeconomics-economic-calendar-api-openapi.yml",
+    "tradingeconomics-financials-api-openapi.yml",
+    "tradingeconomics-forecasts-api-openapi.yml",
+    "tradingeconomics-historical-api-openapi.yml",
+    "tradingeconomics-indicators-api-openapi.yml",
+    "tradingeconomics-markets-api-openapi.yml"
+  ],
+  "outputs": [
+    "tradingeconomics-economic-calendar-api-openapi.yml",
+    "tradingeconomics-financials-api-openapi.yml",
+    "tradingeconomics-forecasts-api-openapi.yml",
+    "tradingeconomics-historical-api-openapi.yml",
+    "tradingeconomics-indicators-api-openapi.yml",
+    "tradingeconomics-markets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
