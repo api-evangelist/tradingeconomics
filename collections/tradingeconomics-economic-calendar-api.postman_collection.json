@@ -1,0 +1,585 @@
+{
+  "item": [
+    {
+      "id": "6b253fe5-9b5d-4002-896c-dfafb9db40b0",
+      "name": "Economic Calendar",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5891dc66-d2a9-44f0-a8da-6021533dc3a6",
+          "name": "Upcoming and recent economic calendar events.",
+          "request": {
+            "name": "Upcoming and recent economic calendar events.",
+            "description": {
+              "content": "Returns scheduled economic events - central bank interest rate decisions, CPI, GDP, employment releases, and more - with actual, previous, consensus forecast, and Trading Economics forecast values. Filter by importance (1=low, 2=medium, 3=high). Limited to 1,000 rows per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calendar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "importance",
+                  "value": "<integer>",
+                  "description": "Event importance filter (1=low, 2=medium, 3=high)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cff505c6-569d-4610-b64f-44ad4b98d138",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calendar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "importance",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1986-03-08T04:49:21.095Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 9830,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"2012-07-11T17:00:28.541Z\"\n  },\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1995-01-30T11:49:38.130Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 4701,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"1991-06-26T10:50:54.972Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c545a510-1ed0-44cf-b0bb-d05c0c19726f",
+          "name": "Calendar events by country and date range.",
+          "request": {
+            "name": "Calendar events by country and date range.",
+            "description": {
+              "content": "Returns calendar events for the given countries (use `All` for every country) between two dates, optionally filtered by importance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calendar",
+                "country",
+                ":countries",
+                ":startDate",
+                ":endDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "importance",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) Country name(s) comma-separated, or `All`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "startDate",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "endDate",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c7cc158-a874-485b-bf44-12c569fae5f7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calendar",
+                    "country",
+                    ":countries",
+                    ":startDate",
+                    ":endDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "importance",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) Country name(s) comma-separated, or `All`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "startDate",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "endDate",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1986-03-08T04:49:21.095Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 9830,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"2012-07-11T17:00:28.541Z\"\n  },\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1995-01-30T11:49:38.130Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 4701,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"1991-06-26T10:50:54.972Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85e697d1-108a-4e88-bafb-213088802a18",
+          "name": "Calendar event types available for one or more countries.",
+          "request": {
+            "name": "Calendar event types available for one or more countries.",
+            "description": {},
+            "url": {
+              "path": [
+                "calendar",
+                "events",
+                "country",
+                ":countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) Country name, or comma-separated list (e.g. `china,canada`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7af52904-ff38-49ba-86aa-381e3997ad1b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calendar",
+                    "events",
+                    "country",
+                    ":countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) Country name, or comma-separated list (e.g. `china,canada`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1986-03-08T04:49:21.095Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 9830,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"2012-07-11T17:00:28.541Z\"\n  },\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1995-01-30T11:49:38.130Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 4701,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"1991-06-26T10:50:54.972Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dc80c85-0a0b-4269-acfa-09e18d6e2433",
+          "name": "Calendar events by calendar ID.",
+          "request": {
+            "name": "Calendar events by calendar ID.",
+            "description": {},
+            "url": {
+              "path": [
+                "calendar",
+                "calendarid",
+                ":ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ids",
+                  "description": "(Required) Comma-separated calendar IDs (e.g. `174108,160025,160030`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d59036dd-2998-4278-9d3e-8085d147febb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calendar",
+                    "calendarid",
+                    ":ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ids",
+                      "description": "(Required) Comma-separated calendar IDs (e.g. `174108,160025,160030`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1986-03-08T04:49:21.095Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 9830,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"2012-07-11T17:00:28.541Z\"\n  },\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1995-01-30T11:49:38.130Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 4701,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"1991-06-26T10:50:54.972Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d78c147e-5ccd-431e-958a-d2c57e33bf33",
+          "name": "Recently updated calendar events.",
+          "request": {
+            "name": "Recently updated calendar events.",
+            "description": {},
+            "url": {
+              "path": [
+                "calendar",
+                "updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b699615-4494-4cc1-8fb5-bdfac916f676",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calendar",
+                    "updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1986-03-08T04:49:21.095Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 9830,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"2012-07-11T17:00:28.541Z\"\n  },\n  {\n    \"CalendarId\": \"string\",\n    \"Date\": \"1995-01-30T11:49:38.130Z\",\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Event\": \"Fed Interest Rate Decision\",\n    \"Reference\": \"string\",\n    \"ReferenceDate\": \"string\",\n    \"Actual\": \"string\",\n    \"Previous\": \"string\",\n    \"Forecast\": \"string\",\n    \"TEForecast\": \"string\",\n    \"Importance\": 4701,\n    \"Ticker\": \"string\",\n    \"Unit\": \"string\",\n    \"LastUpdate\": \"1991-06-26T10:50:54.972Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d073a7e-20ca-4004-96ea-87b05f2411b0",
+    "name": "Trading Economics Economic Calendar API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}

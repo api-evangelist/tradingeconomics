@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Economic Calendar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upcoming and recent economic calendar events.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar",
+            "params": [
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query",
+                "description": "Event importance filter (1=low, 2=medium, 3=high)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns scheduled economic events - central bank interest rate decisions, CPI, GDP, employment releases, and more - with actual, previous, consensus forecast, and Trading Economics forecast values. Filter by importance (1=low, 2=medium, 3=high). Limited to 1,000 rows per request."
+        },
+        {
+          "info": {
+            "name": "Calendar events by country and date range.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/country/:countries/:startDate/:endDate",
+            "params": [
+              {
+                "name": "countries",
+                "value": "All",
+                "type": "path",
+                "description": "Country name(s) comma-separated, or `All`."
+              },
+              {
+                "name": "startDate",
+                "value": "2026-07-01",
+                "type": "path"
+              },
+              {
+                "name": "endDate",
+                "value": "2026-07-31",
+                "type": "path"
+              },
+              {
+                "name": "importance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns calendar events for the given countries (use `All` for every country) between two dates, optionally filtered by importance."
+        },
+        {
+          "info": {
+            "name": "Calendar event types available for one or more countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/events/country/:countries",
+            "params": [
+              {
+                "name": "countries",
+                "value": "china",
+                "type": "path",
+                "description": "Country name, or comma-separated list (e.g. `china,canada`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Calendar event types available for one or more countries."
+        },
+        {
+          "info": {
+            "name": "Calendar events by calendar ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/calendarid/:ids",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated calendar IDs (e.g. `174108,160025,160030`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Calendar events by calendar ID."
+        },
+        {
+          "info": {
+            "name": "Recently updated calendar events.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/calendar/updates",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Recently updated calendar events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

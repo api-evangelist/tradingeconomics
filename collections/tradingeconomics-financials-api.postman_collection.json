@@ -1,0 +1,255 @@
+{
+  "item": [
+    {
+      "id": "3d9454ee-1d28-4a94-8a1f-0555e8e9b1b4",
+      "name": "Financials",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b619c109-8a98-466c-85c3-ee2c172439f6",
+          "name": "Company financials snapshot by category.",
+          "request": {
+            "name": "Company financials snapshot by category.",
+            "description": {},
+            "url": {
+              "path": [
+                "financials",
+                "category",
+                ":category"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) Financial category (e.g. `assets`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5346393-ad8c-4580-ad11-97d504cf9a85",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "financials",
+                    "category",
+                    ":category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "category",
+                      "description": "(Required) Financial category (e.g. `assets`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"AAPL:US\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"Sector\": \"string\",\n    \"Value\": 2279.638726238136,\n    \"Unit\": \"string\",\n    \"Date\": \"1978-09-03T06:36:14.688Z\"\n  },\n  {\n    \"Symbol\": \"AAPL:US\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"Sector\": \"string\",\n    \"Value\": 6771.84945599972,\n    \"Unit\": \"string\",\n    \"Date\": \"1999-07-02T07:03:33.863Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "420adfbe-499b-4c3c-8de6-6ff5c7c50ae9",
+          "name": "Company financials snapshot by stock symbol.",
+          "request": {
+            "name": "Company financials snapshot by stock symbol.",
+            "description": {},
+            "url": {
+              "path": [
+                "financials",
+                "symbol",
+                ":symbol"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) Stock symbol (e.g. `aapl:us`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afc4aea5-179d-4f57-adb5-0678ed633a57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "financials",
+                    "symbol",
+                    ":symbol"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) Stock symbol (e.g. `aapl:us`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"AAPL:US\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"Sector\": \"string\",\n    \"Value\": 2279.638726238136,\n    \"Unit\": \"string\",\n    \"Date\": \"1978-09-03T06:36:14.688Z\"\n  },\n  {\n    \"Symbol\": \"AAPL:US\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"Sector\": \"string\",\n    \"Value\": 6771.84945599972,\n    \"Unit\": \"string\",\n    \"Date\": \"1999-07-02T07:03:33.863Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c20b6b59-adca-4be9-b0ba-fea72ca560f2",
+    "name": "Trading Economics Economic Calendar Financials API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}

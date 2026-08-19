@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar Historical API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Historical",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Historical time series by country and indicator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/country/:countries/indicator/:indicators",
+            "params": [
+              {
+                "name": "countries",
+                "value": "mexico",
+                "type": "path"
+              },
+              {
+                "name": "indicators",
+                "value": "gdp",
+                "type": "path"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns the historical time series for the given countries and indicators (both comma-separatable). Limited to 10,000 rows per request."
+        },
+        {
+          "info": {
+            "name": "Historical time series by country, indicator, and date range.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/country/:countries/indicator/:indicators/:startDate/:endDate",
+            "params": [
+              {
+                "name": "countries",
+                "value": "mexico,sweden",
+                "type": "path"
+              },
+              {
+                "name": "indicators",
+                "value": "gdp,population",
+                "type": "path"
+              },
+              {
+                "name": "startDate",
+                "value": "2015-01-01",
+                "type": "path"
+              },
+              {
+                "name": "endDate",
+                "value": "2015-12-31",
+                "type": "path"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Historical time series by country, indicator, and date range."
+        },
+        {
+          "info": {
+            "name": "Historical time series by ticker from a start date.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/ticker/:ticker/:startDate",
+            "params": [
+              {
+                "name": "ticker",
+                "value": "usurtot",
+                "type": "path"
+              },
+              {
+                "name": "startDate",
+                "value": "2015-03-01",
+                "type": "path"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Historical time series by ticker from a start date."
+        },
+        {
+          "info": {
+            "name": "Recently released or revised indicator values.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/latest",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Recently released or revised indicator values."
+        },
+        {
+          "info": {
+            "name": "Recently updated historical records.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/historical/updates",
+            "params": [
+              {
+                "name": "d1",
+                "value": "",
+                "type": "query",
+                "description": "Start date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "d2",
+                "value": "",
+                "type": "query",
+                "description": "End date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "lu",
+                "value": "",
+                "type": "query",
+                "description": "Last-update date filter (yyyy-mm-dd)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Recently updated historical records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

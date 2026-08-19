@@ -1,0 +1,558 @@
+{
+  "item": [
+    {
+      "id": "bbb7c5a0-fba1-4167-8134-0b0bcdf9e6a0",
+      "name": "Indicators",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7dc4f24-85c4-4da3-8443-47ea8e9130ba",
+          "name": "Latest indicator values for one or more countries.",
+          "request": {
+            "name": "Latest indicator values for one or more countries.",
+            "description": {
+              "content": "Returns a snapshot of the latest values for all economic indicators for the given country (or comma-separated countries), including interest rates, inflation, GDP, and unemployment. Optionally filter to a category group such as `gdp` with the `group` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "country",
+                ":country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "group",
+                  "value": "<string>",
+                  "description": "Filter results to a category group (e.g. `gdp`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "country",
+                  "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e478d1d0-bd26-411c-8e7b-70de121a6058",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "country",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 6463.480264940341,\n    \"LatestValueDate\": \"1990-06-28T02:48:31.283Z\",\n    \"PreviousValue\": 1168.115076266787,\n    \"PreviousValueDate\": \"1971-10-28T22:55:58.559Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"1973-04-26T17:35:52.733Z\"\n  },\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 2882.6762686993866,\n    \"LatestValueDate\": \"1952-09-27T23:48:02.606Z\",\n    \"PreviousValue\": 4686.765527612017,\n    \"PreviousValueDate\": \"1977-12-07T05:06:21.192Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"2022-09-20T23:51:00.734Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da762b23-3ec9-45dd-ab4a-cfde28b3a709",
+          "name": "Latest values of one indicator across all countries.",
+          "request": {
+            "name": "Latest values of one indicator across all countries.",
+            "description": {
+              "content": "Returns the latest value of a single indicator - such as `interest rate`, `inflation rate`, or `gdp` - for every country covered, supporting cross-country comparison of macroeconomic series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "country",
+                "all",
+                ":indicator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indicator",
+                  "description": "(Required) Indicator name (e.g. `interest rate`, `gdp`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "797039cc-862a-43f2-8152-deb9045c12b2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "country",
+                    "all",
+                    ":indicator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indicator",
+                      "description": "(Required) Indicator name (e.g. `interest rate`, `gdp`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 6463.480264940341,\n    \"LatestValueDate\": \"1990-06-28T02:48:31.283Z\",\n    \"PreviousValue\": 1168.115076266787,\n    \"PreviousValueDate\": \"1971-10-28T22:55:58.559Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"1973-04-26T17:35:52.733Z\"\n  },\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 2882.6762686993866,\n    \"LatestValueDate\": \"1952-09-27T23:48:02.606Z\",\n    \"PreviousValue\": 4686.765527612017,\n    \"PreviousValueDate\": \"1977-12-07T05:06:21.192Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"2022-09-20T23:51:00.734Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08124a57-571d-41fe-990e-1c127de1bcd0",
+          "name": "Latest indicator value by Trading Economics ticker.",
+          "request": {
+            "name": "Latest indicator value by Trading Economics ticker.",
+            "description": {},
+            "url": {
+              "path": [
+                "country",
+                "ticker",
+                ":ticker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ticker",
+                  "description": "(Required) Trading Economics indicator ticker (e.g. `usurtot`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1a1260d-996c-46ab-8b11-c8e961e61742",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "country",
+                    "ticker",
+                    ":ticker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ticker",
+                      "description": "(Required) Trading Economics indicator ticker (e.g. `usurtot`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 6463.480264940341,\n    \"LatestValueDate\": \"1990-06-28T02:48:31.283Z\",\n    \"PreviousValue\": 1168.115076266787,\n    \"PreviousValueDate\": \"1971-10-28T22:55:58.559Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"1973-04-26T17:35:52.733Z\"\n  },\n  {\n    \"Country\": \"Mexico\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"Mexico Interest Rate\",\n    \"LatestValue\": 2882.6762686993866,\n    \"LatestValueDate\": \"1952-09-27T23:48:02.606Z\",\n    \"PreviousValue\": 4686.765527612017,\n    \"PreviousValueDate\": \"1977-12-07T05:06:21.192Z\",\n    \"Source\": \"string\",\n    \"Unit\": \"percent\",\n    \"Frequency\": \"Daily\",\n    \"HistoricalDataSymbol\": \"MXONBR\",\n    \"CategoryGroup\": \"Money\",\n    \"LastUpdate\": \"2022-09-20T23:51:00.734Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f742e000-2e97-4cda-9982-94173dd130a1",
+          "name": "Sovereign credit ratings for all countries.",
+          "request": {
+            "name": "Sovereign credit ratings for all countries.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit-ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "057553ee-7ca1-479b-a891-507f7a786546",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"TE\": \"string\",\n    \"TE_Outlook\": \"string\",\n    \"SP\": \"string\",\n    \"SP_Outlook\": \"string\",\n    \"Moodys\": \"string\",\n    \"Moodys_Outlook\": \"string\",\n    \"Fitch\": \"string\",\n    \"Fitch_Outlook\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"TE\": \"string\",\n    \"TE_Outlook\": \"string\",\n    \"SP\": \"string\",\n    \"SP_Outlook\": \"string\",\n    \"Moodys\": \"string\",\n    \"Moodys_Outlook\": \"string\",\n    \"Fitch\": \"string\",\n    \"Fitch_Outlook\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af1f8008-a833-414f-973b-52dd2e6455d3",
+          "name": "Sovereign credit ratings for one or more countries.",
+          "request": {
+            "name": "Sovereign credit ratings for one or more countries.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit-ratings",
+                "country",
+                ":country"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "country",
+                  "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdfcc021-759a-40a8-87a9-8322a05140c2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-ratings",
+                    "country",
+                    ":country"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "country",
+                      "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"TE\": \"string\",\n    \"TE_Outlook\": \"string\",\n    \"SP\": \"string\",\n    \"SP_Outlook\": \"string\",\n    \"Moodys\": \"string\",\n    \"Moodys_Outlook\": \"string\",\n    \"Fitch\": \"string\",\n    \"Fitch_Outlook\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"TE\": \"string\",\n    \"TE_Outlook\": \"string\",\n    \"SP\": \"string\",\n    \"SP_Outlook\": \"string\",\n    \"Moodys\": \"string\",\n    \"Moodys_Outlook\": \"string\",\n    \"Fitch\": \"string\",\n    \"Fitch_Outlook\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c1142e4-7418-44f0-8056-f92152ae5ca1",
+    "name": "Trading Economics Economic Calendar Indicators API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}

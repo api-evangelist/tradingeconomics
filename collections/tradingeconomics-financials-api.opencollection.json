@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar Financials API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Company financials snapshot by category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/financials/category/:category",
+            "params": [
+              {
+                "name": "category",
+                "value": "assets",
+                "type": "path",
+                "description": "Financial category (e.g. `assets`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Company financials snapshot by category."
+        },
+        {
+          "info": {
+            "name": "Company financials snapshot by stock symbol.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/financials/symbol/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "aapl:us",
+                "type": "path",
+                "description": "Stock symbol (e.g. `aapl:us`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Company financials snapshot by stock symbol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar Indicators API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indicators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Latest indicator values for one or more countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/:country",
+            "params": [
+              {
+                "name": "country",
+                "value": "mexico",
+                "type": "path",
+                "description": "Country name, or comma-separated list (e.g. `mexico,sweden`)."
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a category group (e.g. `gdp`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns a snapshot of the latest values for all economic indicators for the given country (or comma-separated countries), including interest rates, inflation, GDP, and unemployment. Optionally filter to a category group such as `gdp` with the `group` parameter."
+        },
+        {
+          "info": {
+            "name": "Latest values of one indicator across all countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/all/:indicator",
+            "params": [
+              {
+                "name": "indicator",
+                "value": "interest rate",
+                "type": "path",
+                "description": "Indicator name (e.g. `interest rate`, `gdp`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns the latest value of a single indicator - such as `interest rate`, `inflation rate`, or `gdp` - for every country covered, supporting cross-country comparison of macroeconomic series."
+        },
+        {
+          "info": {
+            "name": "Latest indicator value by Trading Economics ticker.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/country/ticker/:ticker",
+            "params": [
+              {
+                "name": "ticker",
+                "value": "usurtot",
+                "type": "path",
+                "description": "Trading Economics indicator ticker (e.g. `usurtot`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Latest indicator value by Trading Economics ticker."
+        },
+        {
+          "info": {
+            "name": "Sovereign credit ratings for all countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/credit-ratings",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Sovereign credit ratings for all countries."
+        },
+        {
+          "info": {
+            "name": "Sovereign credit ratings for one or more countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/credit-ratings/country/:country",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "path",
+                "description": "Country name, or comma-separated list (e.g. `mexico,sweden`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Sovereign credit ratings for one or more countries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

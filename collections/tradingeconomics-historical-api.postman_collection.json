@@ -1,0 +1,663 @@
+{
+  "item": [
+    {
+      "id": "4f231f59-36d1-4f86-b917-7e89be1f2a23",
+      "name": "Historical",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49ed8e4d-c93e-40dd-a746-f5b63a7b2a9e",
+          "name": "Historical time series by country and indicator.",
+          "request": {
+            "name": "Historical time series by country and indicator.",
+            "description": {
+              "content": "Returns the historical time series for the given countries and indicators (both comma-separatable). Limited to 10,000 rows per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "historical",
+                "country",
+                ":countries",
+                "indicator",
+                ":indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indicators",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba15c258-b030-482d-b680-d493e532bb41",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical",
+                    "country",
+                    ":countries",
+                    "indicator",
+                    ":indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indicators",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"1996-02-21T08:15:47.946Z\",\n    \"Value\": 7292.037320199343,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"2001-10-24T22:24:20.179Z\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"2008-05-14T02:58:13.341Z\",\n    \"Value\": 5341.961137741603,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"1969-02-06T04:09:01.258Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76a801c6-70b7-4b5d-8e7b-7960723c3ec3",
+          "name": "Historical time series by country, indicator, and date range.",
+          "request": {
+            "name": "Historical time series by country, indicator, and date range.",
+            "description": {},
+            "url": {
+              "path": [
+                "historical",
+                "country",
+                ":countries",
+                "indicator",
+                ":indicators",
+                ":startDate",
+                ":endDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indicators",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "startDate",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "endDate",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0ccab44-12d6-408f-ac07-91d98ab2387e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical",
+                    "country",
+                    ":countries",
+                    "indicator",
+                    ":indicators",
+                    ":startDate",
+                    ":endDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indicators",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "startDate",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "endDate",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"1996-02-21T08:15:47.946Z\",\n    \"Value\": 7292.037320199343,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"2001-10-24T22:24:20.179Z\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"2008-05-14T02:58:13.341Z\",\n    \"Value\": 5341.961137741603,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"1969-02-06T04:09:01.258Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad91bd41-b82f-4795-bb24-5ca655c63843",
+          "name": "Historical time series by ticker from a start date.",
+          "request": {
+            "name": "Historical time series by ticker from a start date.",
+            "description": {},
+            "url": {
+              "path": [
+                "historical",
+                "ticker",
+                ":ticker",
+                ":startDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ticker",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "startDate",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce8138c2-abb0-4a86-a5f9-6dc31cd59de4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical",
+                    "ticker",
+                    ":ticker",
+                    ":startDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ticker",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "startDate",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"1996-02-21T08:15:47.946Z\",\n    \"Value\": 7292.037320199343,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"2001-10-24T22:24:20.179Z\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"2008-05-14T02:58:13.341Z\",\n    \"Value\": 5341.961137741603,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"1969-02-06T04:09:01.258Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7388305-4691-4204-8f50-52df7e4576b3",
+          "name": "Recently released or revised indicator values.",
+          "request": {
+            "name": "Recently released or revised indicator values.",
+            "description": {},
+            "url": {
+              "path": [
+                "historical",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "115dc15b-e4af-4c9c-8b08-cc30af5f2eb0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"1996-02-21T08:15:47.946Z\",\n    \"Value\": 7292.037320199343,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"2001-10-24T22:24:20.179Z\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"2008-05-14T02:58:13.341Z\",\n    \"Value\": 5341.961137741603,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"1969-02-06T04:09:01.258Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8e45edc-7a32-486f-8913-001d889e1cd0",
+          "name": "Recently updated historical records.",
+          "request": {
+            "name": "Recently updated historical records.",
+            "description": {},
+            "url": {
+              "path": [
+                "historical",
+                "updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "d1",
+                  "value": "<date>",
+                  "description": "Start date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "d2",
+                  "value": "<date>",
+                  "description": "End date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "lu",
+                  "value": "<date>",
+                  "description": "Last-update date filter (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "745db1ec-cd00-40db-ac4d-f1f961e5b005",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical",
+                    "updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "d1",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "d2",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "lu",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"1996-02-21T08:15:47.946Z\",\n    \"Value\": 7292.037320199343,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"2001-10-24T22:24:20.179Z\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"string\",\n    \"DateTime\": \"2008-05-14T02:58:13.341Z\",\n    \"Value\": 5341.961137741603,\n    \"Frequency\": \"string\",\n    \"HistoricalDataSymbol\": \"string\",\n    \"LastUpdate\": \"1969-02-06T04:09:01.258Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62877c91-8d67-4250-bf99-17c80fd56225",
+    "name": "Trading Economics Economic Calendar Historical API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}

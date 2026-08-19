@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar Forecasts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forecasts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Indicator forecasts for one or more countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/country/:countries",
+            "params": [
+              {
+                "name": "countries",
+                "value": "mexico",
+                "type": "path",
+                "description": "Country name, or comma-separated list (e.g. `mexico,sweden`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns multi-quarter forecasts for all economic indicators of the given countries, built with the Trading Economics proprietary global macro model and analyst expectations."
+        },
+        {
+          "info": {
+            "name": "Forecasts for one or more indicators across countries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/indicator/:indicators",
+            "params": [
+              {
+                "name": "indicators",
+                "value": "interest rate",
+                "type": "path",
+                "description": "Indicator name(s), comma-separated (e.g. `interest rate,gdp`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Forecasts for one or more indicators across countries."
+        },
+        {
+          "info": {
+            "name": "Forecasts by country and indicator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/country/:countries/indicator/:indicators",
+            "params": [
+              {
+                "name": "countries",
+                "value": "mexico,sweden",
+                "type": "path"
+              },
+              {
+                "name": "indicators",
+                "value": "gdp,population",
+                "type": "path"
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Forecasts by country and indicator."
+        },
+        {
+          "info": {
+            "name": "Forecasts by Trading Economics ticker.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/forecast/ticker/:tickers",
+            "params": [
+              {
+                "name": "tickers",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated tickers (e.g. `usurtot,wgdpchin`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Forecasts by Trading Economics ticker."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

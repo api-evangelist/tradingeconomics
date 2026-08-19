@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trading Economics Economic Calendar Markets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "c",
+      "value": "{{c}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current quotes for commodities.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/commodities",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Current quotes for commodities."
+        },
+        {
+          "info": {
+            "name": "Current quotes for currency pairs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/currency",
+            "params": [
+              {
+                "name": "cross",
+                "value": "",
+                "type": "query",
+                "description": "Filter crosses of a base currency (e.g. `EUR`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Current quotes for currency pairs."
+        },
+        {
+          "info": {
+            "name": "Current quotes for stock market indexes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/index",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Current quotes for stock market indexes."
+        },
+        {
+          "info": {
+            "name": "Current quotes for cryptocurrencies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/crypto",
+            "params": [
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Current quotes for cryptocurrencies."
+        },
+        {
+          "info": {
+            "name": "Current government bond yields.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/bond",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Bond maturity (e.g. `10Y`)."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country (e.g. `france`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Returns government bond yields. Filter by maturity with `type` (1M, 3M, 6M, 52W, 2Y, 3Y, 5Y, 7Y, 10Y, 15Y, 20Y, 30Y) and by country with `country` - the market-side complement to policy interest rate series."
+        },
+        {
+          "info": {
+            "name": "Current quotes for specific market symbols.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/symbol/:symbols",
+            "params": [
+              {
+                "name": "symbols",
+                "value": "aapl:us",
+                "type": "path",
+                "description": "Comma-separated market symbols (e.g. `aapl:us,indu:ind`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Current quotes for specific market symbols."
+        },
+        {
+          "info": {
+            "name": "Daily historical prices for market symbols.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/historical/:symbols",
+            "params": [
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated market symbols."
+              },
+              {
+                "name": "d1",
+                "value": "",
+                "type": "query",
+                "description": "Start date (yyyy-mm-dd)."
+              },
+              {
+                "name": "d2",
+                "value": "",
+                "type": "query",
+                "description": "End date (yyyy-mm-dd)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Daily historical prices for market symbols."
+        },
+        {
+          "info": {
+            "name": "Intraday prices for market symbols.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/intraday/:symbols",
+            "params": [
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated market symbols."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Intraday prices for market symbols."
+        },
+        {
+          "info": {
+            "name": "Search market instruments by term.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tradingeconomics.com/markets/search/:term",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Restrict search to a category (e.g. `index`, `bond`)."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Output format. JSON is the default for most endpoints."
+              }
+            ]
+          },
+          "docs": "Search market instruments by term."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,482 @@
+{
+  "item": [
+    {
+      "id": "90247d2a-e60f-4c2e-b35c-b5e9c15d8b1c",
+      "name": "Forecasts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bb36009e-0d72-437b-abd3-2b95919074b4",
+          "name": "Indicator forecasts for one or more countries.",
+          "request": {
+            "name": "Indicator forecasts for one or more countries.",
+            "description": {
+              "content": "Returns multi-quarter forecasts for all economic indicators of the given countries, built with the Trading Economics proprietary global macro model and analyst expectations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forecast",
+                "country",
+                ":countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0200591-38eb-4681-86ea-3c05d10e1ecb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast",
+                    "country",
+                    ":countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) Country name, or comma-separated list (e.g. `mexico,sweden`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 8406.647220494244,\n    \"LatestValueDate\": \"1946-11-24T14:14:59.259Z\",\n    \"Forecast1\": 6640.913732743275,\n    \"Forecast2\": 3081.1133706690784,\n    \"Forecast3\": 7724.161317858925,\n    \"Forecast4\": 5987.790008140905,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 3607.695875714457,\n    \"LatestValueDate\": \"1994-05-10T12:34:02.475Z\",\n    \"Forecast1\": 1221.4396981115617,\n    \"Forecast2\": 3043.023189822072,\n    \"Forecast3\": 6075.948990262201,\n    \"Forecast4\": 2631.772882864938,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52d01a9b-0891-4166-9234-9abdb543060e",
+          "name": "Forecasts for one or more indicators across countries.",
+          "request": {
+            "name": "Forecasts for one or more indicators across countries.",
+            "description": {},
+            "url": {
+              "path": [
+                "forecast",
+                "indicator",
+                ":indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indicators",
+                  "description": "(Required) Indicator name(s), comma-separated (e.g. `interest rate,gdp`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff5a72bc-653c-4b13-b046-0028f845bde1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast",
+                    "indicator",
+                    ":indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indicators",
+                      "description": "(Required) Indicator name(s), comma-separated (e.g. `interest rate,gdp`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 8406.647220494244,\n    \"LatestValueDate\": \"1946-11-24T14:14:59.259Z\",\n    \"Forecast1\": 6640.913732743275,\n    \"Forecast2\": 3081.1133706690784,\n    \"Forecast3\": 7724.161317858925,\n    \"Forecast4\": 5987.790008140905,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 3607.695875714457,\n    \"LatestValueDate\": \"1994-05-10T12:34:02.475Z\",\n    \"Forecast1\": 1221.4396981115617,\n    \"Forecast2\": 3043.023189822072,\n    \"Forecast3\": 6075.948990262201,\n    \"Forecast4\": 2631.772882864938,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b437897-b239-4ea9-83a1-f72529d2c388",
+          "name": "Forecasts by country and indicator.",
+          "request": {
+            "name": "Forecasts by country and indicator.",
+            "description": {},
+            "url": {
+              "path": [
+                "forecast",
+                "country",
+                ":countries",
+                "indicator",
+                ":indicators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "indicators",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d075cdf-71fb-40f0-83c8-ddfeaed059f7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast",
+                    "country",
+                    ":countries",
+                    "indicator",
+                    ":indicators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "indicators",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 8406.647220494244,\n    \"LatestValueDate\": \"1946-11-24T14:14:59.259Z\",\n    \"Forecast1\": 6640.913732743275,\n    \"Forecast2\": 3081.1133706690784,\n    \"Forecast3\": 7724.161317858925,\n    \"Forecast4\": 5987.790008140905,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 3607.695875714457,\n    \"LatestValueDate\": \"1994-05-10T12:34:02.475Z\",\n    \"Forecast1\": 1221.4396981115617,\n    \"Forecast2\": 3043.023189822072,\n    \"Forecast3\": 6075.948990262201,\n    \"Forecast4\": 2631.772882864938,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c0cf3ce-eac0-4333-8529-632fd8292607",
+          "name": "Forecasts by Trading Economics ticker.",
+          "request": {
+            "name": "Forecasts by Trading Economics ticker.",
+            "description": {},
+            "url": {
+              "path": [
+                "forecast",
+                "ticker",
+                ":tickers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tickers",
+                  "description": "(Required) Comma-separated tickers (e.g. `usurtot,wgdpchin`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae21e6cc-b88e-4d83-8396-b27a8d96c7a8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast",
+                    "ticker",
+                    ":tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tickers",
+                      "description": "(Required) Comma-separated tickers (e.g. `usurtot,wgdpchin`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 8406.647220494244,\n    \"LatestValueDate\": \"1946-11-24T14:14:59.259Z\",\n    \"Forecast1\": 6640.913732743275,\n    \"Forecast2\": 3081.1133706690784,\n    \"Forecast3\": 7724.161317858925,\n    \"Forecast4\": 5987.790008140905,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  },\n  {\n    \"Country\": \"string\",\n    \"Category\": \"Interest Rate\",\n    \"Title\": \"string\",\n    \"LatestValue\": 3607.695875714457,\n    \"LatestValueDate\": \"1994-05-10T12:34:02.475Z\",\n    \"Forecast1\": 1221.4396981115617,\n    \"Forecast2\": 3043.023189822072,\n    \"Forecast3\": 6075.948990262201,\n    \"Forecast4\": 2631.772882864938,\n    \"ForecastDate1\": \"string\",\n    \"ForecastDate2\": \"string\",\n    \"ForecastDate3\": \"string\",\n    \"ForecastDate4\": \"string\",\n    \"HistoricalDataSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f0a5abeb-0d1e-4062-b5cb-405909e77067",
+    "name": "Trading Economics Economic Calendar Forecasts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}

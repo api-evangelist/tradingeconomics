@@ -1,0 +1,949 @@
+{
+  "item": [
+    {
+      "id": "104e39b8-7790-4685-bd97-7a3f9e1ee304",
+      "name": "Markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87257177-c8f3-4dd7-ae5c-3215fff04b61",
+          "name": "Current quotes for commodities.",
+          "request": {
+            "name": "Current quotes for commodities.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "commodities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29356a1e-202a-4d46-acf2-0a59867aaaa3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "commodities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da9fbe3d-5930-47ad-8626-d570a3ef6631",
+          "name": "Current quotes for currency pairs.",
+          "request": {
+            "name": "Current quotes for currency pairs.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cross",
+                  "value": "<string>",
+                  "description": "Filter crosses of a base currency (e.g. `EUR`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69f756ae-cc95-4d7b-bcd2-84849b639e01",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cross",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8a17b5e-063e-4590-8b49-ac25c1b57244",
+          "name": "Current quotes for stock market indexes.",
+          "request": {
+            "name": "Current quotes for stock market indexes.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "index"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f873ddc-62c4-4696-8bfb-9ada90d3c18f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84b1bb4e-e4c0-4af4-9e31-7ed5ab7df1fd",
+          "name": "Current quotes for cryptocurrencies.",
+          "request": {
+            "name": "Current quotes for cryptocurrencies.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "crypto"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a287c373-8b6e-4ed8-8a89-7f463bd52c31",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "crypto"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e07cd8a-00aa-4787-a33d-46946efb8872",
+          "name": "Current government bond yields.",
+          "request": {
+            "name": "Current government bond yields.",
+            "description": {
+              "content": "Returns government bond yields. Filter by maturity with `type` (1M, 3M, 6M, 52W, 2Y, 3Y, 5Y, 7Y, 10Y, 15Y, 20Y, 30Y) and by country with `country` - the market-side complement to policy interest rate series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                "bond"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Bond maturity (e.g. `10Y`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter by country (e.g. `france`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67723828-71f8-4162-b1e1-365b6133eff5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "bond"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f841923c-554a-46b3-8b52-629a6eef1fa5",
+          "name": "Current quotes for specific market symbols.",
+          "request": {
+            "name": "Current quotes for specific market symbols.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "symbol",
+                ":symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbols",
+                  "description": "(Required) Comma-separated market symbols (e.g. `aapl:us,indu:ind`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0eca62ad-0075-4e2e-bd2b-00b25f2cfb10",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "symbol",
+                    ":symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbols",
+                      "description": "(Required) Comma-separated market symbols (e.g. `aapl:us,indu:ind`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d87adc1-18fb-4f08-86c3-99f1df2b788f",
+          "name": "Daily historical prices for market symbols.",
+          "request": {
+            "name": "Daily historical prices for market symbols.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "historical",
+                ":symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "d1",
+                  "value": "<date>",
+                  "description": "Start date (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "d2",
+                  "value": "<date>",
+                  "description": "End date (yyyy-mm-dd)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbols",
+                  "description": "(Required) Comma-separated market symbols."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03e33df5-7942-40a0-9e20-81eeeacfdc36",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "historical",
+                    ":symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "d1",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "d2",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbols",
+                      "description": "(Required) Comma-separated market symbols."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"string\",\n    \"Date\": \"2007-05-19T05:24:40.906Z\",\n    \"Open\": 1642.9266416178268,\n    \"High\": 871.2333828460661,\n    \"Low\": 1684.3316945884367,\n    \"Close\": 1587.2725542620415\n  },\n  {\n    \"Symbol\": \"string\",\n    \"Date\": \"1981-05-23T04:35:18.611Z\",\n    \"Open\": 5365.818916881956,\n    \"High\": 5226.291774101523,\n    \"Low\": 8901.410048377335,\n    \"Close\": 6006.534046145838\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "020b80ef-f337-4323-bbde-7bf9b14ba453",
+          "name": "Intraday prices for market symbols.",
+          "request": {
+            "name": "Intraday prices for market symbols.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "intraday",
+                ":symbols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbols",
+                  "description": "(Required) Comma-separated market symbols."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "314805bb-b2a5-49a6-9664-790661ad86fa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "intraday",
+                    ":symbols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbols",
+                      "description": "(Required) Comma-separated market symbols."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"string\",\n    \"Date\": \"2007-05-19T05:24:40.906Z\",\n    \"Open\": 1642.9266416178268,\n    \"High\": 871.2333828460661,\n    \"Low\": 1684.3316945884367,\n    \"Close\": 1587.2725542620415\n  },\n  {\n    \"Symbol\": \"string\",\n    \"Date\": \"1981-05-23T04:35:18.611Z\",\n    \"Open\": 5365.818916881956,\n    \"High\": 5226.291774101523,\n    \"Low\": 8901.410048377335,\n    \"Close\": 6006.534046145838\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fc7b4a5-91b0-43b8-b6a8-f9cf762d8fcb",
+          "name": "Search market instruments by term.",
+          "request": {
+            "name": "Search market instruments by term.",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "search",
+                ":term"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Restrict search to a category (e.g. `index`, `bond`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Output format. JSON is the default for most endpoints."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "term",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b3d5d6f-1d6b-4e4b-af7c-de34633d44b0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "search",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1971-07-29T14:37:24.560Z\",\n    \"Last\": 7820.449624365041,\n    \"Group\": \"string\",\n    \"DailyChange\": 7492.273384890386,\n    \"DailyPercentualChange\": 203.94368712382206,\n    \"WeeklyChange\": 7897.837189824518,\n    \"MonthlyChange\": 1043.8919138193369,\n    \"YearlyChange\": 8998.548513592666,\n    \"YTDChange\": 3484.355974521387,\n    \"yesterday\": 3556.197700172061,\n    \"lastWeek\": 4903.269159354494,\n    \"lastMonth\": 2410.3152974426657,\n    \"lastYear\": 5890.176847875762,\n    \"unit\": \"string\"\n  },\n  {\n    \"Symbol\": \"EURUSD:CUR\",\n    \"Ticker\": \"string\",\n    \"Name\": \"string\",\n    \"Country\": \"string\",\n    \"Date\": \"1964-12-01T04:43:31.605Z\",\n    \"Last\": 5788.933550150898,\n    \"Group\": \"string\",\n    \"DailyChange\": 9225.03557404431,\n    \"DailyPercentualChange\": 9298.359981048025,\n    \"WeeklyChange\": 1207.5606269778227,\n    \"MonthlyChange\": 5416.888167927386,\n    \"YearlyChange\": 1761.8029109147749,\n    \"YTDChange\": 2091.7932700598294,\n    \"yesterday\": 4989.839845057749,\n    \"lastWeek\": 1348.6827561675163,\n    \"lastMonth\": 5251.135235740781,\n    \"lastYear\": 8037.270816878712,\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tradingeconomics.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "c"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e13ac44a-6ca3-44d1-9fa7-5f36d694d3f2",
+    "name": "Trading Economics Economic Calendar Markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.\n\nContact Support:\n Name: Trading Economics",
+      "type": "text/plain"
+    }
+  }
+}
