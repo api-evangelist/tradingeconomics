@@ -27,6 +27,14 @@ tags:
 - Macroeconomics
 - Financial Data
 - Economic Calendar
+- Forecast
+- Markets
+tags_raw:
+- Economic Indicators
+- Interest Rates
+- Macroeconomics
+- Financial Data
+- Economic Calendar
 - Forecasts
 - Markets
 created: '2026-07-11'
@@ -36,6 +44,12 @@ apis:
 - aid: tradingeconomics:tradingeconomics-streaming-api
   name: Trading Economics Streaming API
   tags:
+  - Streaming
+  - WebSocket
+  - Real-Time
+  - Economic Calendar
+  - Markets
+  tags_raw:
   - Streaming
   - WebSocket
   - Real Time
@@ -105,6 +119,8 @@ apis:
   humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
   baseURL: https://api.tradingeconomics.com
   tags:
+  - Forecast
+  tags_raw:
   - Forecasts
   properties:
   - type: OpenAPI
