@@ -7,6 +7,18 @@ description: Trading Economics provides economic data for 196 countries - more t
   GDP, and unemployment - alongside an economic calendar, proprietary macro forecasts,
   historical data, and live market quotes, all delivered through a single REST API
   and a WebSocket streaming service.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
