@@ -110,6 +110,8 @@ apis:
   humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
   baseURL: https://api.tradingeconomics.com
   tags:
+  - Financial
+  tags_raw:
   - Financials
   properties:
   - type: OpenAPI
