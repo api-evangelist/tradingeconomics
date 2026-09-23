@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Trading Economics Economic Calendar Forecasts API
-  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  title: Trading Economics Forecasts API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials.
   termsOfService: https://tradingeconomics.com/terms-of-service.aspx
   contact:
     name: Trading Economics
@@ -20,7 +20,7 @@ paths:
       operationId: getForecastsByCountry
       tags:
       - Forecasts
-      summary: Indicator forecasts for one or more countries.
+      summary: Indicator forecasts for one or more countries
       description: Returns multi-quarter forecasts for all economic indicators of the given countries, built with the Trading Economics proprietary global macro model and analyst expectations.
       parameters:
       - name: countries
@@ -45,7 +45,7 @@ paths:
       operationId: getForecastsByIndicator
       tags:
       - Forecasts
-      summary: Forecasts for one or more indicators across countries.
+      summary: Forecasts for one or more indicators across countries
       parameters:
       - name: indicators
         in: path
@@ -69,7 +69,7 @@ paths:
       operationId: getForecastsByCountryAndIndicator
       tags:
       - Forecasts
-      summary: Forecasts by country and indicator.
+      summary: Forecasts by country and indicator
       parameters:
       - name: countries
         in: path
@@ -98,7 +98,7 @@ paths:
       operationId: getForecastsByTicker
       tags:
       - Forecasts
-      summary: Forecasts by Trading Economics ticker.
+      summary: Forecasts by Trading Economics ticker
       parameters:
       - name: tickers
         in: path
@@ -117,6 +117,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/Forecast'
 components:
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
   schemas:
     Forecast:
       type: object
@@ -153,18 +165,6 @@ components:
           type: string
         HistoricalDataSymbol:
           type: string
-  parameters:
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format. JSON is the default for most endpoints.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - html
   securitySchemes:
     clientKeyQuery:
       type: apiKey

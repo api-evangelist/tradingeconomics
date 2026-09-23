@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Trading Economics Economic Calendar Markets API
-  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  title: Trading Economics Markets API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials.
   termsOfService: https://tradingeconomics.com/terms-of-service.aspx
   contact:
     name: Trading Economics
@@ -20,7 +20,7 @@ paths:
       operationId: getMarketsCommodities
       tags:
       - Markets
-      summary: Current quotes for commodities.
+      summary: Current quotes for commodities
       parameters:
       - $ref: '#/components/parameters/format'
       responses:
@@ -37,7 +37,7 @@ paths:
       operationId: getMarketsCurrencies
       tags:
       - Markets
-      summary: Current quotes for currency pairs.
+      summary: Current quotes for currency pairs
       parameters:
       - name: cross
         in: query
@@ -60,7 +60,7 @@ paths:
       operationId: getMarketsIndexes
       tags:
       - Markets
-      summary: Current quotes for stock market indexes.
+      summary: Current quotes for stock market indexes
       parameters:
       - $ref: '#/components/parameters/format'
       responses:
@@ -77,7 +77,7 @@ paths:
       operationId: getMarketsCrypto
       tags:
       - Markets
-      summary: Current quotes for cryptocurrencies.
+      summary: Current quotes for cryptocurrencies
       parameters:
       - $ref: '#/components/parameters/format'
       responses:
@@ -94,7 +94,7 @@ paths:
       operationId: getMarketsBonds
       tags:
       - Markets
-      summary: Current government bond yields.
+      summary: Current government bond yields
       description: Returns government bond yields. Filter by maturity with `type` (1M, 3M, 6M, 52W, 2Y, 3Y, 5Y, 7Y, 10Y, 15Y, 20Y, 30Y) and by country with `country` - the market-side complement to policy interest rate series.
       parameters:
       - name: type
@@ -137,7 +137,7 @@ paths:
       operationId: getMarketsBySymbol
       tags:
       - Markets
-      summary: Current quotes for specific market symbols.
+      summary: Current quotes for specific market symbols
       parameters:
       - name: symbols
         in: path
@@ -161,7 +161,7 @@ paths:
       operationId: getMarketsHistorical
       tags:
       - Markets
-      summary: Daily historical prices for market symbols.
+      summary: Daily historical prices for market symbols
       parameters:
       - name: symbols
         in: path
@@ -198,7 +198,7 @@ paths:
       operationId: getMarketsIntraday
       tags:
       - Markets
-      summary: Intraday prices for market symbols.
+      summary: Intraday prices for market symbols
       parameters:
       - name: symbols
         in: path
@@ -221,7 +221,7 @@ paths:
       operationId: searchMarkets
       tags:
       - Markets
-      summary: Search market instruments by term.
+      summary: Search market instruments by term
       parameters:
       - name: term
         in: path
@@ -246,6 +246,23 @@ paths:
                   $ref: '#/components/schemas/MarketQuote'
 components:
   schemas:
+    MarketHistoricalPrice:
+      type: object
+      description: Historical or intraday price bar for a market symbol.
+      properties:
+        Symbol:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Open:
+          type: number
+        High:
+          type: number
+        Low:
+          type: number
+        Close:
+          type: number
     MarketQuote:
       type: object
       description: Current quote for a market instrument.
@@ -288,23 +305,6 @@ components:
           type: number
         unit:
           type: string
-    MarketHistoricalPrice:
-      type: object
-      description: Historical or intraday price bar for a market symbol.
-      properties:
-        Symbol:
-          type: string
-        Date:
-          type: string
-          format: date-time
-        Open:
-          type: number
-        High:
-          type: number
-        Low:
-          type: number
-        Close:
-          type: number
   parameters:
     format:
       name: f

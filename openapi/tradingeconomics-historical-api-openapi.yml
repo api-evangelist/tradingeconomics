@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Trading Economics Economic Calendar Historical API
-  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  title: Trading Economics Historical API
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials.
   termsOfService: https://tradingeconomics.com/terms-of-service.aspx
   contact:
     name: Trading Economics
@@ -20,7 +20,7 @@ paths:
       operationId: getHistoricalByCountryAndIndicator
       tags:
       - Historical
-      summary: Historical time series by country and indicator.
+      summary: Historical time series by country and indicator
       description: Returns the historical time series for the given countries and indicators (both comma-separatable). Limited to 10,000 rows per request.
       parameters:
       - name: countries
@@ -50,7 +50,7 @@ paths:
       operationId: getHistoricalByCountryIndicatorAndDates
       tags:
       - Historical
-      summary: Historical time series by country, indicator, and date range.
+      summary: Historical time series by country, indicator, and date range
       parameters:
       - name: countries
         in: path
@@ -93,7 +93,7 @@ paths:
       operationId: getHistoricalByTicker
       tags:
       - Historical
-      summary: Historical time series by ticker from a start date.
+      summary: Historical time series by ticker from a start date
       parameters:
       - name: ticker
         in: path
@@ -123,7 +123,7 @@ paths:
       operationId: getHistoricalLatest
       tags:
       - Historical
-      summary: Recently released or revised indicator values.
+      summary: Recently released or revised indicator values
       parameters:
       - name: country
         in: query
@@ -151,7 +151,7 @@ paths:
       operationId: getHistoricalUpdates
       tags:
       - Historical
-      summary: Recently updated historical records.
+      summary: Recently updated historical records
       parameters:
       - name: d1
         in: query
@@ -185,6 +185,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/HistoricalValue'
 components:
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
   schemas:
     HistoricalValue:
       type: object
@@ -206,18 +218,6 @@ components:
         LastUpdate:
           type: string
           format: date-time
-  parameters:
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format. JSON is the default for most endpoints.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - html
   securitySchemes:
     clientKeyQuery:
       type: apiKey

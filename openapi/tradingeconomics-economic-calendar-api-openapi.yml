@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Trading Economics Economic Calendar API
-  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials. Authenticate with an API client key passed as the `c` query parameter (format `key:secret`) or as an `Authorization` header. Output defaults to JSON and can be switched with `f=json|csv|html`. Live streaming is a separate WebSocket surface at wss://stream.tradingeconomics.com described in the companion AsyncAPI document.
+  description: REST API for Trading Economics economic data covering 196 countries - economic indicators (interest rates, inflation, GDP, unemployment, and 15,000+ other series), the economic calendar, proprietary macro forecasts, full historical time series, live market quotes, and company financials.
   termsOfService: https://tradingeconomics.com/terms-of-service.aspx
   contact:
     name: Trading Economics
@@ -20,7 +20,7 @@ paths:
       operationId: getCalendar
       tags:
       - Economic Calendar
-      summary: Upcoming and recent economic calendar events.
+      summary: Upcoming and recent economic calendar events
       description: Returns scheduled economic events - central bank interest rate decisions, CPI, GDP, employment releases, and more - with actual, previous, consensus forecast, and Trading Economics forecast values. Filter by importance (1=low, 2=medium, 3=high). Limited to 1,000 rows per request.
       parameters:
       - name: importance
@@ -48,7 +48,7 @@ paths:
       operationId: getCalendarByCountryAndDate
       tags:
       - Economic Calendar
-      summary: Calendar events by country and date range.
+      summary: Calendar events by country and date range
       description: Returns calendar events for the given countries (use `All` for every country) between two dates, optionally filtered by importance.
       parameters:
       - name: countries
@@ -96,7 +96,7 @@ paths:
       operationId: getCalendarEventsByCountry
       tags:
       - Economic Calendar
-      summary: Calendar event types available for one or more countries.
+      summary: Calendar event types available for one or more countries
       parameters:
       - name: countries
         in: path
@@ -120,7 +120,7 @@ paths:
       operationId: getCalendarEventsById
       tags:
       - Economic Calendar
-      summary: Calendar events by calendar ID.
+      summary: Calendar events by calendar ID
       parameters:
       - name: ids
         in: path
@@ -143,7 +143,7 @@ paths:
       operationId: getCalendarUpdates
       tags:
       - Economic Calendar
-      summary: Recently updated calendar events.
+      summary: Recently updated calendar events
       parameters:
       - $ref: '#/components/parameters/format'
       responses:
@@ -156,6 +156,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/CalendarEvent'
 components:
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
   schemas:
     CalendarEvent:
       type: object
@@ -198,18 +210,6 @@ components:
         LastUpdate:
           type: string
           format: date-time
-  parameters:
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format. JSON is the default for most endpoints.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - html
   securitySchemes:
     clientKeyQuery:
       type: apiKey
