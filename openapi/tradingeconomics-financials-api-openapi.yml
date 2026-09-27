@@ -64,18 +64,6 @@ paths:
                 items:
                   $ref: '#/components/schemas/Financial'
 components:
-  parameters:
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format. JSON is the default for most endpoints.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - html
   schemas:
     Financial:
       type: object
@@ -99,6 +87,18 @@ components:
         Date:
           type: string
           format: date-time
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
   securitySchemes:
     clientKeyQuery:
       type: apiKey

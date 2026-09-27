@@ -136,18 +136,6 @@ paths:
                 items:
                   $ref: '#/components/schemas/CreditRating'
 components:
-  parameters:
-    format:
-      name: f
-      in: query
-      required: false
-      description: Output format. JSON is the default for most endpoints.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - html
   schemas:
     CreditRating:
       type: object
@@ -213,6 +201,18 @@ components:
         LastUpdate:
           type: string
           format: date-time
+  parameters:
+    format:
+      name: f
+      in: query
+      required: false
+      description: Output format. JSON is the default for most endpoints.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - html
   securitySchemes:
     clientKeyQuery:
       type: apiKey

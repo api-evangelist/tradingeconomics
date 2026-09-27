@@ -42,6 +42,7 @@ tags:
 - Economic Calendar
 - Forecast
 - Markets
+- Real-Time
 tags_raw:
 - Economic Indicators
 - Interest Rates
@@ -50,6 +51,7 @@ tags_raw:
 - Economic Calendar
 - Forecasts
 - Markets
+- Real-Time
 created: '2026-07-11'
 modified: '2026-07-11'
 specificationVersion: '0.23'
@@ -110,9 +112,10 @@ apis:
   humanURL: https://docs.tradingeconomics.com/indicators/snapshot/
   baseURL: https://api.tradingeconomics.com
   tags:
-  - Financial
+  - Finance
   tags_raw:
   - Financials
+  - Financial
   properties:
   - type: OpenAPI
     url: openapi/tradingeconomics-financials-api-openapi.yml
