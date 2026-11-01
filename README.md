@@ -1,4 +1,4 @@
-# Trading Economics (tradingeconomics)
+# Trading Economics
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,188 +66,154 @@
 
 Trading Economics provides economic data for 196 countries - more than 20 million time series covering economic indicators like interest rates, inflation, GDP, and unemployment - alongside an economic calendar, proprietary macro forecasts, historical data, and live market quotes, all delivered through a single REST API and a WebSocket streaming service.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tradingeconomics/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tradingeconomics/refs/heads/main/apis.yml)
+**Areas:** Economic Indicators · Interest Rates · Macroeconomics · Financial Data · Economic Calendar · Forecast · Markets · Real-Time
 
-## Access Model
+## Trading Economics on APIs.io
 
-The API documentation at [docs.tradingeconomics.com](https://docs.tradingeconomics.com) is fully public, and official client libraries (Python, Node.js) are open on [GitHub](https://github.com/tradingeconomics), but calling the API requires a **paid subscription** - you get an API client key (key:secret) by subscribing to a plan at [developer.tradingeconomics.com](https://developer.tradingeconomics.com/). There is no free tier: the long-standing `guest:guest` sample-data account **has been discontinued** for the REST API (verified with a live request on 2026-07-11, which returned a guest-account-discontinued message pointing at the pricing page). Trial accounts are limited to 100,000 data points and 100 data requests. Third-party comparisons (June 2026) place Standard at $149/month and Professional at $299/month, billed yearly, with Enterprise custom-priced by features, request volume, and redistribution rights.
+Everything profiled for Trading Economics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tradingeconomics/](https://apis.io/providers/tradingeconomics/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Economic Indicators
-- Interest Rates
-- Macroeconomics
-- Financial Data
-- Economic Calendar
-- Forecasts
-- Markets
+- [Trading Economics Streaming API](https://apis.io/apis/tradingeconomics/tradingeconomics-streaming-api/) — Persistent WebSocket connection at wss://stream.tradingeconomics.com delivering live market quote ticks by symbol and push notifications for economic…
+- [Trading Economics Economic Calendar API](https://apis.io/apis/tradingeconomics/tradingeconomics-economic-calendar-api/) — The Economic Calendar API from Trading Economics — 5 operation(s) for economic calendar.
+- [Trading Economics Financials API](https://apis.io/apis/tradingeconomics/tradingeconomics-financials-api/) — The Financials API from Trading Economics — 2 operation(s) for financials.
+- [Trading Economics Forecasts API](https://apis.io/apis/tradingeconomics/tradingeconomics-forecasts-api/) — The Forecasts API from Trading Economics — 4 operation(s) for forecasts.
+- [Trading Economics Historical API](https://apis.io/apis/tradingeconomics/tradingeconomics-historical-api/) — The Historical API from Trading Economics — 5 operation(s) for historical.
+- [Trading Economics Indicators API](https://apis.io/apis/tradingeconomics/tradingeconomics-indicators-api/) — The Indicators API from Trading Economics — 5 operation(s) for indicators.
+- [Trading Economics Markets API](https://apis.io/apis/tradingeconomics/tradingeconomics-markets-api/) — The Markets API from Trading Economics — 9 operation(s) for markets.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Trading Economics Indicators API
+Event-driven and webhook contracts.
 
-Latest values for more than 15,000 economic indicator time series sourced directly from official statistics agencies and central banks - interest rates, inflation, GDP, unemployment, trade, and more - queryable by country, by indicator across all countries, by ticker, plus sovereign credit ratings.
+- [Trading Economics Streaming API (WebSocket)](https://apis.io/asyncapis/tradingeconomics/tradingeconomics-asyncapi/)
 
-- **Human URL:** [https://docs.tradingeconomics.com/indicators/snapshot/](https://docs.tradingeconomics.com/indicators/snapshot/)
-- **Base URL:** `https://api.tradingeconomics.com`
+#### Event channels (1)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Economic Indicators
-- Interest Rates
-- Inflation
-- GDP
-- Credit Ratings
+- [/](https://apis.io/channels/tradingeconomics/untitled/)
 
-#### Properties
+#### MCP servers (1)
 
-- [Documentation](https://docs.tradingeconomics.com/indicators/snapshot/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Model Context Protocol servers that expose the API to agents.
 
-### Trading Economics Economic Calendar API
+- [tradingeconomics](https://apis.io/servers/tradingeconomics/tradingeconomics/)
 
-Around 1,600 scheduled economic events per month across more than 150 countries - central bank rate decisions, CPI, GDP, and employment releases - with actual, previous, consensus forecast, and Trading Economics forecast values, filterable by country, date range, importance, and calendar ID.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.tradingeconomics.com/economic_calendar/snapshot/](https://docs.tradingeconomics.com/economic_calendar/snapshot/)
-- **Base URL:** `https://api.tradingeconomics.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Tradingeconomics Agentic Access](https://apis.io/agentic-access/tradingeconomics/tradingeconomics-agentic-access/)
 
-- Economic Calendar
-- Central Banks
-- Interest Rate Decisions
-- Releases
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.tradingeconomics.com/economic_calendar/snapshot/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Trading Economics API](https://apis.io/collections/tradingeconomics/open-tradingeconomics/)
+- [Trading Economics Economic Calendar API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-economic-calendar-api/)
+- [Trading Economics Economic Calendar Financials API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-financials-api/)
+- [Trading Economics Economic Calendar Forecasts API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-forecasts-api/)
+- [Trading Economics Economic Calendar Historical API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-historical-api/)
+- [Trading Economics Economic Calendar Indicators API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-indicators-api/)
+- [Trading Economics Economic Calendar Markets API](https://apis.io/collections/tradingeconomics/open-tradingeconomics-markets-api/)
 
-### Trading Economics Markets API
+#### Governance rules (1)
 
-Current quotes for commodities, currencies, stock market indexes, cryptocurrencies, and government bond yields across maturities from 1M to 30Y, plus per-symbol quotes, daily and intraday historical prices, and market search.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://docs.tradingeconomics.com/markets/snapshot/](https://docs.tradingeconomics.com/markets/snapshot/)
-- **Base URL:** `https://api.tradingeconomics.com`
+- [Trading Economics — asyncapi rules](https://apis.io/rules/tradingeconomics/tradingeconomics-asyncapi-spectral-rules/)
 
-#### Tags
+#### Security (3)
 
-- Markets
-- Bonds
-- Currencies
-- Commodities
-- Stock Indexes
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Tradingeconomics Authentication](https://apis.io/security/tradingeconomics/tradingeconomics-authentication/)
+- [Tradingeconomics Domain Security](https://apis.io/security/tradingeconomics/tradingeconomics-domain-security/)
+- [Tradingeconomics Vulnerability Disclosure](https://apis.io/security/tradingeconomics/tradingeconomics-vulnerability-disclosure/)
 
-- [Documentation](https://docs.tradingeconomics.com/markets/snapshot/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Trading Economics Forecasts API
+Published plans, tiers and prices.
 
-Multi-quarter projections for economic indicators - including interest rates, inflation, and GDP - built with a proprietary global macro model and analyst expectations, queryable by country, indicator, country-and-indicator, or ticker, plus forecasts for market instruments.
+- [Tradingeconomics Plans Pricing](https://apis.io/plans/tradingeconomics/tradingeconomics-plans-pricing/)
 
-- **Human URL:** [https://docs.tradingeconomics.com/forecasts/indicators/](https://docs.tradingeconomics.com/forecasts/indicators/)
-- **Base URL:** `https://api.tradingeconomics.com`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Forecasts
-- Macroeconomics
-- Interest Rates
-- Projections
+- [Tradingeconomics Rate Limits](https://apis.io/rate-limits/tradingeconomics/tradingeconomics-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.tradingeconomics.com/forecasts/indicators/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Trading Economics Historical API
+- [Tradingeconomics Finops](https://apis.io/finops/tradingeconomics/tradingeconomics-finops/)
 
-Full historical time series behind every indicator - by country and indicator with optional date ranges, by ticker, plus latest-updates endpoints for syncing revisions - capped at 10,000 rows per request.
+## Where to find this API
 
-- **Human URL:** [https://docs.tradingeconomics.com/indicators/historical/](https://docs.tradingeconomics.com/indicators/historical/)
-- **Base URL:** `https://api.tradingeconomics.com`
-
-#### Tags
-
-- Historical Data
-- Time Series
-- Economic Indicators
-
-#### Properties
-
-- [Documentation](https://docs.tradingeconomics.com/indicators/historical/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Trading Economics Financials API
-
-Company fundamentals by financial category or stock symbol, plus earnings and revenue calendars, dividends, IPOs, stock splits, and sector listings for listed companies.
-
-- **Human URL:** [https://docs.tradingeconomics.com/financials/snapshot/](https://docs.tradingeconomics.com/financials/snapshot/)
-- **Base URL:** `https://api.tradingeconomics.com`
-
-#### Tags
-
-- Financials
-- Earnings
-- Company Fundamentals
-
-#### Properties
-
-- [Documentation](https://docs.tradingeconomics.com/financials/snapshot/)
-- [OpenAPI](openapi/tradingeconomics-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tradingeconomics.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tradingeconomics.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Trading Economics Streaming API
-
-Persistent WebSocket connection at wss://stream.tradingeconomics.com delivering live market quote ticks by symbol and push notifications for economic calendar releases, news, and earnings via subscribe topics, authorized with API client credentials.
-
-- **Human URL:** [https://docs.tradingeconomics.com/markets/streaming/](https://docs.tradingeconomics.com/markets/streaming/)
-- **Base URL:** `wss://stream.tradingeconomics.com`
-
-#### Tags
-
-- Streaming
-- WebSocket
-- Real Time
-- Economic Calendar
-- Markets
-
-#### Properties
-
-- [Documentation](https://docs.tradingeconomics.com/markets/streaming/)
-- [Documentation](https://docs.tradingeconomics.com/economic_calendar/streaming/)
-- [AsyncAPI](asyncapi/tradingeconomics-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://tradingeconomics.com)
 - [Documentation](https://docs.tradingeconomics.com)
-- [GitHub Organization](https://github.com/tradingeconomics)
-- [LinkedIn](https://www.linkedin.com/company/tradingeconomics)
 - [Pricing](https://tradingeconomics.com/api/pricing.aspx)
-- [Plans](plans/tradingeconomics-plans-pricing.yml)
-- [Rate Limits](rate-limits/tradingeconomics-rate-limits.yml)
-- [Fin Ops](finops/tradingeconomics-finops.yml)
+- [GitHub](https://github.com/tradingeconomics)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.4** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 52.5 |
+| Contract governance | 11.4 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 55.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tradingeconomics/](https://apis.io/providers/tradingeconomics/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Trading Economics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tradingeconomics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
